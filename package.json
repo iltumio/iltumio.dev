@@ -15,8 +15,13 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@chakra-ui/gatsby-plugin": "^1.0.2",
+    "@chakra-ui/react": "^1.4.2",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "framer-motion": "^4.1.2",
     "gatsby": "^3.2.1",
     "gatsby-plugin-manifest": "^3.2.0",
     "gatsby-plugin-mdx": "^2.2.0",
@@ -24,6 +29,7 @@
     "gatsby-source-filesystem": "^3.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-icons": "^4.2.0",
     "sass": "^1.32.8"
   }
 }
