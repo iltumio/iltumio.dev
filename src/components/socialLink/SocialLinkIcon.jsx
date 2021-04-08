@@ -8,6 +8,6 @@ export const SocialLinkIcon = (props) => (
     fontSize="lg"
     color="white"
     {...props}
-    h={50} w={50}
+    h="40px" w="40px"
   />
 )

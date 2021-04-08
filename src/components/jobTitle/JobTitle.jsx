@@ -1,17 +1,28 @@
 import * as React from "react";
-import { Box, Flex, Stack, Text, useColorModeValue as mode } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Stack,
+  Text,
+  useColorModeValue as mode,
+  Link
+} from "@chakra-ui/react";
+
+const WrapLink = ({ children, href }) => <Link target="_blank" href={href}>{children}</Link>;
 
 const JobTitle = (props) => {
-  const { company, title, children, icon, dates } = props;
+  const { company, title, children, icon, dates, href } = props;
   return (
     <Stack spacing="6" direction={{ base: "column", md: "row" }}>
-      <Flex alignItems="center" justifyContent="center">
+      <Stack alignItems="center" justifyContent="center" flex="1">
         {icon}
-      </Flex>
-      <Stack spacing="1">
-        <Text fontWeight="extrabold" fontSize="lg">
-          {company}
-        </Text>
+      </Stack>
+      <Stack spacing="1" flex="3">
+        <WrapLink href={href}>
+          <Text fontWeight="bold" fontSize="md">
+            {company}
+          </Text>
+        </WrapLink>
         <Text fontWeight="bold" fontSize="md">
           {title}
         </Text>
