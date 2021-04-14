@@ -37,7 +37,7 @@ const CurrentJob = () => (
           dates="dec. 2020 - now"
           href="http://site.satellite.im"
         >
-          Multi platform decentralized messaging app
+          Multi platform, decentralized and privacy focused messaging application build on top of blockchain, IPFS and peer-to-peer connections
         </Feature>
       </SimpleGrid>
     </Container>

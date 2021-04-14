@@ -49,7 +49,11 @@ const Hero = () => (
         <Text fontSize="lg" fontWeight="medium" mt="3">
           Software Engineer
         </Text>
-        <LightMode>I'm a passionate developer</LightMode>
+        <LightMode>
+          I'm a passionate developer from Milan, Italy, interested into everything
+          <br/>
+          that moves around software development and blockchain technology
+          </LightMode>
       </Center>
     </Box>
     <Box
