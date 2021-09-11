@@ -10,7 +10,7 @@ import {
   FaDocker,
   FaJs,
   FaUsers,
-  FaMagic
+  FaMagic,
 } from "react-icons/fa";
 import {
   DiNodejsSmall,
@@ -19,7 +19,13 @@ import {
   DiReact,
   DiMysql,
 } from "react-icons/di";
-import { SiGatsby, SiNextDotJs } from "react-icons/si";
+import {
+  SiGatsby,
+  SiNextDotJs,
+  SiTypescript,
+  SiRust,
+  SiNuxtDotJs,
+} from "react-icons/si";
 
 const iconSize = 25;
 
@@ -30,14 +36,19 @@ const Skills = () => (
     </Heading>
     <Flex direction="row">
       <SimpleGrid minChildWidth="180px" width="100%">
-        <Skill icon={<FaJs size={iconSize} />}>Javascript</Skill>
-        <Skill icon={<DiReact size={iconSize} />}>React</Skill>
-        <Skill icon={<DiReact size={iconSize} />}>React Native</Skill>
-        <Skill icon={<FaVuejs size={iconSize} />}>VueJS</Skill>
-        <Skill icon={<DiNodejsSmall size={iconSize} />}>Node JS</Skill>
         <Skill icon={<FaEthereum size={iconSize} />}>Solidity</Skill>
         <Skill icon={<FaEthereum size={iconSize} />}>Web3</Skill>
         <Skill icon={<FaEthereum size={iconSize} />}>Ethers JS</Skill>
+        <Skill icon={<SiTypescript size={iconSize} />}>Typescript</Skill>
+        <Skill icon={<FaJs size={iconSize} />}>Javascript</Skill>
+        <Skill icon={<FaVuejs size={iconSize} />}>VueJS</Skill>
+        <Skill icon={<SiNuxtDotJs size={iconSize} />}>Nuxt</Skill>
+        <Skill icon={<DiReact size={iconSize} />}>React</Skill>
+        <Skill icon={<DiReact size={iconSize} />}>React Native</Skill>
+        <Skill icon={<SiNextDotJs size={iconSize} />}>Next.Js</Skill>
+        <Skill icon={<SiGatsby size={iconSize} />}>Gatsby Js</Skill>
+        <Skill icon={<DiNodejsSmall size={iconSize} />}>Node JS</Skill>
+        <Skill icon={<SiRust size={iconSize} />}>Rust</Skill>
         <Skill icon={<FaHtml5 size={iconSize} />}>HTML5</Skill>
         <Skill icon={<FaCss3 size={iconSize} />}>CSS</Skill>
         <Skill icon={<FaSass size={iconSize} />}>Sass</Skill>
@@ -45,8 +56,6 @@ const Skills = () => (
         <Skill icon={<FaDocker size={iconSize} />}>Docker</Skill>
         <Skill icon={<DiMongodb size={iconSize} />}>MongoDB</Skill>
         <Skill icon={<DiMysql size={iconSize} />}>MySQL</Skill>
-        <Skill icon={<SiGatsby size={iconSize} />}>Gatsby Js</Skill>
-        <Skill icon={<SiNextDotJs size={iconSize} />}>Next.Js</Skill>
         <Skill icon={<FaUsers size={iconSize} />}>Team working</Skill>
         <Skill icon={<FaMagic size={iconSize} />}>Problem solving</Skill>
       </SimpleGrid>
