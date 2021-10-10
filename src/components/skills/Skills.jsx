@@ -26,6 +26,7 @@ import {
   SiRust,
   SiNuxtDotJs,
 } from "react-icons/si";
+import { SolanaIcon } from "../icons";
 
 const iconSize = 25;
 
@@ -39,6 +40,9 @@ const Skills = () => (
         <Skill icon={<FaEthereum size={iconSize} />}>Solidity</Skill>
         <Skill icon={<FaEthereum size={iconSize} />}>Web3</Skill>
         <Skill icon={<FaEthereum size={iconSize} />}>Ethers JS</Skill>
+        <Skill icon={<SolanaIcon width={iconSize} height={iconSize} />}>
+          Solana
+        </Skill>
         <Skill icon={<SiTypescript size={iconSize} />}>Typescript</Skill>
         <Skill icon={<FaJs size={iconSize} />}>Javascript</Skill>
         <Skill icon={<FaVuejs size={iconSize} />}>VueJS</Skill>
