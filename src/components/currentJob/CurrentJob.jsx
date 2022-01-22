@@ -23,6 +23,17 @@ export const CurrentJob = () => (
           applications and systems based on blockchain technology
         </JobTitle>
         <JobTitle
+          company="Satellite.im"
+          title="Chief Technology Officer & Blockchain Lead"
+          icon={<Image w="65px" src={Satellite} />}
+          dates="dec. 2020 - now"
+          href="https://satellite.im"
+        >
+          Multi platform, decentralized and privacy focused messaging
+          application build on top of blockchain, IPFS and peer-to-peer
+          connections
+        </JobTitle>
+        <JobTitle
           company="BCode"
           title="Software Architect"
           icon={<Image w="55px" src={BCode} />}
@@ -31,17 +42,6 @@ export const CurrentJob = () => (
         >
           Blockchain focused tech firm that develops many applications to give
           companies easy access and frictionless onboarding to the blockchain
-        </JobTitle>
-        <JobTitle
-          company="Satellite.im"
-          title="Blockchain Engineer"
-          icon={<Image w="65px" src={Satellite} />}
-          dates="dec. 2020 - now"
-          href="http://site.satellite.im"
-        >
-          Multi platform, decentralized and privacy focused messaging
-          application build on top of blockchain, IPFS and peer-to-peer
-          connections
         </JobTitle>
       </SimpleGrid>
     </Container>
