@@ -1,5 +1,4 @@
 import React from "react";
-import Skill from "../skill/Skill";
 import { Flex, Container, Heading, SimpleGrid } from "@chakra-ui/react";
 import {
   FaHtml5,
@@ -21,16 +20,17 @@ import {
 } from "react-icons/di";
 import {
   SiGatsby,
-  SiNextDotJs,
+  SiNextdotjs,
   SiTypescript,
   SiRust,
-  SiNuxtDotJs,
+  SiNuxtdotjs,
 } from "react-icons/si";
 import { SolanaIcon } from "../icons";
+import { Skill } from "../index";
 
 const iconSize = 25;
 
-const Skills = () => (
+export const Skills = () => (
   <Container maxW="8xl">
     <Heading size="xl" fontWeight="extrabold" textAlign="center" p={8}>
       Skills
@@ -46,10 +46,10 @@ const Skills = () => (
         <Skill icon={<SiTypescript size={iconSize} />}>Typescript</Skill>
         <Skill icon={<FaJs size={iconSize} />}>Javascript</Skill>
         <Skill icon={<FaVuejs size={iconSize} />}>VueJS</Skill>
-        <Skill icon={<SiNuxtDotJs size={iconSize} />}>Nuxt</Skill>
+        <Skill icon={<SiNuxtdotjs size={iconSize} />}>Nuxt</Skill>
         <Skill icon={<DiReact size={iconSize} />}>React</Skill>
         <Skill icon={<DiReact size={iconSize} />}>React Native</Skill>
-        <Skill icon={<SiNextDotJs size={iconSize} />}>Next.Js</Skill>
+        <Skill icon={<SiNextdotjs size={iconSize} />}>Next.Js</Skill>
         <Skill icon={<SiGatsby size={iconSize} />}>Gatsby Js</Skill>
         <Skill icon={<DiNodejsSmall size={iconSize} />}>Node JS</Skill>
         <Skill icon={<SiRust size={iconSize} />}>Rust</Skill>
@@ -66,5 +66,3 @@ const Skills = () => (
     </Flex>
   </Container>
 );
-
-export default Skills;

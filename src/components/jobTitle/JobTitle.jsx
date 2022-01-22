@@ -4,12 +4,16 @@ import {
   Stack,
   Text,
   useColorModeValue as mode,
-  Link
+  Link,
 } from "@chakra-ui/react";
 
-const WrapLink = ({ children, href }) => <Link target="_blank" href={href}>{children}</Link>;
+export const WrapLink = ({ children, href }) => (
+  <Link target="_blank" href={href}>
+    {children}
+  </Link>
+);
 
-const JobTitle = (props) => {
+export const JobTitle = (props) => {
   const { company, title, children, icon, dates, href } = props;
   return (
     <Stack spacing="6" direction={{ base: "column", md: "row" }}>
@@ -33,5 +37,3 @@ const JobTitle = (props) => {
     </Stack>
   );
 };
-
-export default JobTitle;

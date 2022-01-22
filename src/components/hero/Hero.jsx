@@ -9,10 +9,10 @@ import {
   Avatar,
 } from "@chakra-ui/react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { SocialLink } from "../socialLink/SocialLink";
+import { SocialLink } from "../index";
 import ProfilePicture from "../../images/manuel-tumiati-profile-picture.jpg";
 
-const Hero = () => (
+export const Hero = () => (
   <Box
     as="section"
     bg="gray.800"
@@ -42,7 +42,7 @@ const Hero = () => (
       position="relative"
     >
       <Center flexDirection="column" textAlign="center" color="white" h="full">
-        <Avatar src={ProfilePicture} w="80px" h="80px"/>
+        <Avatar src={ProfilePicture} w="80px" h="80px" />
         <Heading size="2xl" fontWeight="extrabold">
           Manuel Tumiati
         </Heading>
@@ -50,10 +50,11 @@ const Hero = () => (
           Software Engineer
         </Text>
         <LightMode>
-          I'm a passionate developer from Milan, Italy, interested into everything
-          <br/>
+          I'm a passionate developer from Milan, Italy, interested into
+          everything
+          <br />
           that moves around software development and blockchain technology
-          </LightMode>
+        </LightMode>
       </Center>
     </Box>
     <Box
@@ -84,12 +85,14 @@ const Hero = () => (
             />
           </Box>
           <Box textAlign="center" color="white">
-            <SocialLink href="https://github.com/iltumio" icon={FaGithub} label="Github" />
+            <SocialLink
+              href="https://github.com/iltumio"
+              icon={FaGithub}
+              label="Github"
+            />
           </Box>
         </SimpleGrid>
       </Box>
     </Box>
   </Box>
 );
-
-export default Hero;
