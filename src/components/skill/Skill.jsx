@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex, Text } from "@chakra-ui/react";
 
-const Skill = ({ icon, children }) => (
+export const Skill = ({ icon, children }) => (
   <Flex direction="row" alignItems="center">
     <Flex p={2}>{icon}</Flex>
     <Flex flex="1">
@@ -11,5 +11,3 @@ const Skill = ({ icon, children }) => (
     </Flex>
   </Flex>
 );
-
-export default Skill;

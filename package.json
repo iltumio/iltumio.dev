@@ -3,15 +3,15 @@
   "version": "1.0.1",
   "private": true,
   "description": "iltumio.dev",
-  "author": "mtumiati",
+  "author": "iltumio",
   "keywords": [
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
-    "serve": "gatsby serve",
+    "serve": "yarn dev && gatsby serve",
     "clean": "gatsby clean"
   },
   "dependencies": {
