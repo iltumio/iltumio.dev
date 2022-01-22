@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: "iltumio.dev",
+    siteUrl: "https://iltumio.dev",
   },
   plugins: [
     "gatsby-plugin-sass",
