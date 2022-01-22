@@ -42,7 +42,7 @@ export const Hero = () => (
       position="relative"
     >
       <Center flexDirection="column" textAlign="center" color="white" h="full">
-        <Avatar src={ProfilePicture} w="80px" h="80px" />
+        <Avatar src={ProfilePicture} w="80px" h="80px" name="Manuel Tumiati" />
         <Heading size="2xl" fontWeight="extrabold">
           Manuel Tumiati
         </Heading>

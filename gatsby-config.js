@@ -19,6 +19,8 @@ module.exports = {
       },
       __key: "pages",
     },
-    "@chakra-ui/gatsby-plugin"
+    "@chakra-ui/gatsby-plugin",
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-robots-txt",
   ],
 };

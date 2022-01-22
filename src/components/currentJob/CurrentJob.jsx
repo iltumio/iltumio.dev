@@ -15,7 +15,7 @@ export const CurrentJob = () => (
         <JobTitle
           company="KNOBS Srl"
           title="Chief Technology Officer"
-          icon={<Image w="55px" src={KNOBS} />}
+          icon={<Image w="55px" src={KNOBS} alt="KNOBS Logo" />}
           dates="sep. 2018 - now"
           href="https://www.knobs.it"
         >
@@ -25,7 +25,7 @@ export const CurrentJob = () => (
         <JobTitle
           company="Satellite.im"
           title="Chief Technology Officer & Blockchain Lead"
-          icon={<Image w="65px" src={Satellite} />}
+          icon={<Image w="65px" src={Satellite} alt="Satellite Logo" />}
           dates="dec. 2020 - now"
           href="https://satellite.im"
         >
@@ -36,7 +36,7 @@ export const CurrentJob = () => (
         <JobTitle
           company="BCode"
           title="Software Architect"
-          icon={<Image w="55px" src={BCode} />}
+          icon={<Image w="55px" src={BCode} alt="BCode Logo" />}
           dates="nov. 2020 - now"
           href="https://www.bcode.cloud"
         >
