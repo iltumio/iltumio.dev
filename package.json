@@ -1,40 +1,43 @@
 {
-  "name": "iltumio.dev",
-  "version": "1.0.2",
+  "name": "my-qwik-basic-starter",
+  "description": "Recommended for your first Qwik app",
+  "engines": {
+    "node": ">=15.0.0"
+  },
   "private": true,
-  "description": "iltumio.dev",
-  "author": "iltumio",
-  "keywords": [
-    "gatsby"
-  ],
   "scripts": {
-    "dev": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "yarn dev && gatsby serve",
-    "clean": "gatsby clean"
+    "build": "qwik build",
+    "build.client": "vite build",
+    "build.preview": "vite build --ssr src/entry.preview.tsx",
+    "build.types": "tsc --incremental --noEmit",
+    "dev": "vite --mode ssr",
+    "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
+    "fmt": "prettier --write .",
+    "fmt.check": "prettier --check .",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "preview": "qwik build preview && vite preview --open",
+    "start": "vite --open --mode ssr",
+    "qwik": "qwik"
+  },
+  "devDependencies": {
+    "@builder.io/qwik": "0.9.0",
+    "@builder.io/qwik-city": "0.0.111",
+    "@types/eslint": "8.4.6",
+    "@types/node": "latest",
+    "@typescript-eslint/eslint-plugin": "5.37.0",
+    "@typescript-eslint/parser": "5.37.0",
+    "autoprefixer": "^10.4.12",
+    "eslint": "8.23.1",
+    "eslint-plugin-qwik": "0.9.0",
+    "node-fetch": "3.2.10",
+    "postcss": "^8.4.16",
+    "prettier": "2.7.1",
+    "tailwindcss": "^3.1.8",
+    "typescript": "4.8.3",
+    "vite": "3.1.1",
+    "vite-tsconfig-paths": "3.5.0"
   },
   "dependencies": {
-    "@chakra-ui/gatsby-plugin": "^1.0.2",
-    "@chakra-ui/react": "^1.4.2",
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5",
-    "@mdx-js/mdx": "^1.6.22",
-    "@mdx-js/react": "^1.6.22",
-    "add": "^2.0.6",
-    "framer-motion": "^4.1.2",
-    "gatsby": "^4.5.4",
-    "gatsby-plugin-manifest": "^3.2.0",
-    "gatsby-plugin-mdx": "^2.2.0",
-    "gatsby-plugin-react-helmet": "^5.5.0",
-    "gatsby-plugin-robots-txt": "^1.7.0",
-    "gatsby-plugin-sass": "^4.2.0",
-    "gatsby-source-filesystem": "^3.2.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0",
-    "react-icons": "^4.2.0",
-    "sass": "^1.32.8",
-    "yarn": "^1.22.17"
+    "sass": "^1.55.0"
   }
 }
