@@ -10,7 +10,7 @@ export { Next } from "./Next";
 export { NodeJs } from "./NodeJs";
 export { Nuxt } from "./Nuxt";
 export { ProblemSolving } from "./ProblemSolving";
-export { QwikLogo } from "./qwik";
+export { QwikLogo } from "./Qwik";
 export { React } from "./React";
 export { Rust } from "./Rust";
 export { Sass } from "./Sass";
