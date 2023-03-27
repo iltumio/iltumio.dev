@@ -1,19 +1,23 @@
 /*
  * WHAT IS THIS FILE?
  *
- * It's the bundle entry point for `npm run preview`.
- * That is, serving your app built in production mode.
+ * It's the  entry point for netlify-edge when building for production.
  *
- * Feel free to modify this file, but don't remove it!
- *
- * Learn more about Vite's preview command:
- * - https://vitejs.dev/config/preview-options.html#preview-options
+ * Learn more about the cloudflare integration here:
+ * - https://qwik.builder.io/deployments/netlify-edge/
  *
  */
-import { qwikCity } from '@builder.io/qwik-city/middleware/node';
-import render from './entry.ssr';
+import {
+  createQwikCity,
+  type PlatformNetlify,
+} from "@builder.io/qwik-city/middleware/netlify-edge";
+import qwikCityPlan from "@qwik-city-plan";
+import { manifest } from "@qwik-client-manifest";
+import render from "./entry.ssr";
 
-/**
- * The default export is the QwikCity adaptor used by Vite preview.
- */
-export default qwikCity(render);
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface QwikCityPlatform extends PlatformNetlify {}
+}
+
+export default createQwikCity({ render, qwikCityPlan, manifest });
