@@ -9,7 +9,7 @@ type SocialProps = {
   size?: number;
 };
 
-export default component$(({ link, type, size }: SocialProps) => {
+export default component$(({ type, size, link }: SocialProps) => {
   const Icon = SocialIcons[type];
   const iconSize = size || 30;
   return (
