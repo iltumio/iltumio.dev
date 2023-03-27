@@ -4,6 +4,7 @@ dist
 lib
 server
 functions/**/*.js
+netlify
 
 # Development
 node_modules
@@ -14,6 +15,7 @@ node_modules
 .vscode
 .rollup.cache
 tsconfig.tsbuildinfo
+cache/
 
 # Logs
 logs
@@ -37,3 +39,6 @@ lerna-debug.log*
 # Yarn
 .yarn/*
 !.yarn/releases
+
+# Netlify
+.netlify
