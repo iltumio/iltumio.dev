@@ -26,7 +26,7 @@ export default component$(() => {
         />
         <JobPosition
           name="BCode Srl"
-          role="Advisor"
+          role="Web3 Advisor"
           description="Blockchain focused tech firm that develops many applications to give companies easy access and frictionless onboarding to the blockchain"
           image="https://bcode.cloud/wp-content/uploads/2022/08/bcode-logo-2.png"
           link="https://bcode.cloud"

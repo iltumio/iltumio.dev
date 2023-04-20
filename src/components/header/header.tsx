@@ -28,7 +28,7 @@ export default component$(() => {
             </div>
             <h2 class="text-xl">
               <strong class="font-extrabold text-red-700 sm:block">
-                Blockchain Engineer
+                Web3 CTO & Blockchain Engineer
               </strong>
             </h2>
             <p class="mt-4 sm:leading-relaxed sm:text-l">
