@@ -34,7 +34,7 @@ export default component$(() => {
         <Skill name="Web3">
           <Ethereum q:slot="icon" />
         </Skill>
-        <Skill name="Ethers JS">
+        <Skill name="Ethers">
           <Ethereum q:slot="icon" />
         </Skill>
         <Skill name="Solana">

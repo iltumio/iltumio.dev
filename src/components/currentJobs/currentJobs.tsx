@@ -17,7 +17,7 @@ export default component$(() => {
         />
         <JobPosition
           name="Satellite.im"
-          role="Chief Technology Officer & Blockchain Lead"
+          role="Web3 Advisor"
           description="Multi platform, decentralized and privacy focused messaging application build on top of blockchain, IPFS and peer-to-peer connections"
           image="https://pbs.twimg.com/profile_images/1397668569467531266/47JoP9A2_400x400.jpg"
           link="https://satellite.im"
@@ -26,7 +26,7 @@ export default component$(() => {
         />
         <JobPosition
           name="BCode Srl"
-          role="Solution Architect"
+          role="Advisor"
           description="Blockchain focused tech firm that develops many applications to give companies easy access and frictionless onboarding to the blockchain"
           image="https://bcode.cloud/wp-content/uploads/2022/08/bcode-logo-2.png"
           link="https://bcode.cloud"
