@@ -1,6 +1,10 @@
 import { QwikIntrinsicElements } from "@builder.io/qwik";
 
-export const Github = (props: QwikIntrinsicElements["svg"]) => (
+export const Github = ({
+  width,
+  height,
+  ...props
+}: QwikIntrinsicElements["svg"]) => (
   <svg
     stroke="currentColor"
     fill="currentColor"

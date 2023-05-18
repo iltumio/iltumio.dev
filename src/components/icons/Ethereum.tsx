@@ -1,12 +1,16 @@
 import { QwikIntrinsicElements } from "@builder.io/qwik";
 
-export const Ethereum = (props: QwikIntrinsicElements["svg"]) => (
+export const Ethereum = ({
+  width,
+  height,
+  ...props
+}: QwikIntrinsicElements["svg"]) => (
   <svg
     stroke="currentColor"
     fill="currentColor"
     viewBox="0 0 320 512"
-    height={25}
-    width={25}
+    height={height || 25}
+    width={width || 25}
     xmlns="http://www.w3.org/2000/svg"
     stroke-width={0}
     {...props}

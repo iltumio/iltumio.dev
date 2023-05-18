@@ -1,12 +1,16 @@
 import { QwikIntrinsicElements } from "@builder.io/qwik";
 
-export const Solana = (props: QwikIntrinsicElements["svg"]) => (
+export const Solana = ({
+  width,
+  height,
+  ...props
+}: QwikIntrinsicElements["svg"]) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 250 195.56"
     xmlSpace="preserve"
-    width={25}
-    height={25}
+    width={width || 25}
+    height={height || 25}
     {...props}
   >
     <path

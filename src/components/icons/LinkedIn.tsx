@@ -1,6 +1,10 @@
 import { QwikIntrinsicElements } from "@builder.io/qwik";
 
-export const LinkedIn = (props: QwikIntrinsicElements["svg"]) => (
+export const LinkedIn = ({
+  width,
+  height,
+  ...props
+}: QwikIntrinsicElements["svg"]) => (
   <svg
     stroke="currentColor"
     fill="currentColor"

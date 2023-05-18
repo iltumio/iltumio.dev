@@ -1,13 +1,17 @@
 import { QwikIntrinsicElements } from "@builder.io/qwik";
 
-export const MongoDB = (props: QwikIntrinsicElements["svg"]) => (
+export const MongoDB = ({
+  width,
+  height,
+  ...props
+}: QwikIntrinsicElements["svg"]) => (
   <svg
     stroke="currentColor"
     fill="currentColor"
     stroke-width={0}
     viewBox="0 0 32 32"
-    height={25}
-    width={25}
+    height={height || 25}
+    width={width || 25}
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >

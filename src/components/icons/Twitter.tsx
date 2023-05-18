@@ -1,6 +1,10 @@
 import { QwikIntrinsicElements } from "@builder.io/qwik";
 
-export const Twitter = (props: QwikIntrinsicElements["svg"]) => (
+export const Twitter = ({
+  width,
+  height,
+  ...props
+}: QwikIntrinsicElements["svg"]) => (
   <svg
     stroke="currentColor"
     fill="currentColor"
