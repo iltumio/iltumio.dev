@@ -28,23 +28,24 @@
     "@netlify/edge-functions": "^2.0.0",
     "@netlify/vite-plugin-netlify-edge": "1.1.2",
     "@types/eslint": "8.21.3",
-    "@types/node": "^18.15.10",
+    "@types/node": "^18.16.12",
     "@typescript-eslint/eslint-plugin": "5.56.0",
     "@typescript-eslint/parser": "5.56.0",
     "autoprefixer": "^10.4.14",
     "eslint": "8.36.0",
     "eslint-plugin-qwik": "0.24.0",
-    "netlify-cli": "^12.0.11",
+    "netlify-cli": "^12.14.0",
     "node-fetch": "3.3.1",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.23",
     "prettier": "2.8.7",
-    "tailwindcss": "^3.2.7",
+    "tailwindcss": "^3.3.2",
     "typescript": "5.0.2",
-    "undici": "^5.21.0",
+    "undici": "^5.22.1",
     "vite": "4.2.1",
     "vite-tsconfig-paths": "4.0.7"
   },
   "dependencies": {
-    "sass": "^1.60.0"
+    "qwik": "^1.0.57",
+    "sass": "^1.62.1"
   }
 }
