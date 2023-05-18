@@ -1,5 +1,7 @@
 # Manuel Tumiati 🧑‍💻
-Blockchain enthusiast & engineer
+## Blockchain enthusiast & engineer
+
+I am an enthusiastic software engineer with a specialization in blockchain technology, covering various aspects ranging from architecture design to smart contract development. My passion lies in leveraging the power of blockchain to create innovative solutions and drive technological advancements.
 
 ## ENS
 `iltumio.eth`
