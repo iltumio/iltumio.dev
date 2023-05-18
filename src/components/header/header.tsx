@@ -17,7 +17,7 @@ export default component$(() => {
               <h1 class="text-3xl font-extrabold sm:text-5xl max-w-1/2">
                 Manuel Tumiati
               </h1>
-              <div class="flex flex-row justify-evenly items-center lg:w-1/2">
+              <div class="flex flex-row justify-evenly items-center lg:w-1/2 text-3xl pt-4 pb-4 md:pb-2">
                 <Social link={"https://github.com/iltumio"} type="Github" />
                 <Social
                   link={"https://www.linkedin.com/in/manuel-tumiati/"}
@@ -31,10 +31,12 @@ export default component$(() => {
                 Web3 CTO & Blockchain Engineer
               </strong>
             </h2>
-            <p class="mt-4 sm:leading-relaxed sm:text-l">
-              I'm a passionate developer from Milan, Italy, interested into
-              everything that moves around software development and blockchain
-              technology
+            <p class="mt-4 sm:leading-relaxed sm:text-l text-justify md:pl-0 md:pr-0 pl-4 pr-4">
+              I am an enthusiastic software engineer with a specialization in
+              blockchain technology, covering various aspects ranging from
+              architecture design to smart contract development. My passion lies
+              in leveraging the power of blockchain to create innovative
+              solutions and drive technological advancements.
             </p>
           </div>
         </div>
