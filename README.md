@@ -29,3 +29,9 @@ pnpm build
 
 ## Credits
 Made with ♥️ by Manuel Tumiati
+
+## Static Site Generator (Node.js)
+
+```
+pnpm build.server
+```
