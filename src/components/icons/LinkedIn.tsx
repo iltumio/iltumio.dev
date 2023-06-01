@@ -11,8 +11,8 @@ export const LinkedIn = ({
     stroke-width={0}
     viewBox="0 0 448 512"
     className="css-atdsfb"
-    height="1em"
-    width="1em"
+    height={width || "1em"}
+    width={height || "1em"}
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
