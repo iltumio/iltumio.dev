@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import {
-  QwikCity,
+  QwikCityProvider as QwikCity,
   RouterOutlet,
   ServiceWorkerRegister,
 } from "@builder.io/qwik-city";

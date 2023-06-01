@@ -7,7 +7,7 @@ export default component$(() => {
       <h2 class="text-xl font-bold pb-4 pt-4">Current Job</h2>
       <div class="grid lg:grid-cols-3 w-full">
         <JobPosition
-          name="KNOBS Srl"
+          name="KNOBS"
           role="Chief Technology Officer"
           description="Software House & Tech Advisory firm specialized in Web-IoT applications and systems based on blockchain technology"
           image="https://pbs.twimg.com/profile_images/1225071653459238914/OiZpNqAL_400x400.png"
@@ -25,7 +25,7 @@ export default component$(() => {
           to="now"
         />
         <JobPosition
-          name="BCode Srl"
+          name="Bcode"
           role="Web3 Advisor"
           description="Blockchain focused tech firm that develops many applications to give companies easy access and frictionless onboarding to the blockchain"
           image="https://bcode.cloud/wp-content/uploads/2022/08/bcode-logo-2.png"
