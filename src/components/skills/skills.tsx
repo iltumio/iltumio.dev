@@ -1,26 +1,29 @@
 import { component$ } from "@builder.io/qwik";
+import { Solana } from "../icons";
 import {
-  CSS3,
-  Docker,
-  Ethereum,
-  Gatsby,
-  HTML5,
-  Javascript,
-  MongoDB,
-  MySQL,
-  Next,
-  NodeJs,
-  Nuxt,
-  ProblemSolving,
-  React,
-  Rust,
-  Sass,
-  Solana,
-  TeamWork,
-  Typescript,
-  Vue,
-} from "../icons";
-import { Git } from "../icons/Git";
+  FaNodeJs,
+  FaHtml5,
+  FaCss3,
+  FaSass,
+  FaRust,
+  FaJs,
+  FaGitAlt,
+  FaDocker,
+  FaReact,
+  FaVuejs,
+  FaEthereum,
+  FaUsersSolid,
+  FaWandMagicSparklesSolid,
+} from "@qwikest/icons/font-awesome";
+import {
+  SiNextdotjs,
+  SiNuxtdotjs,
+  SiMysql,
+  SiMongodb,
+  SiGatsby,
+  SiTypescript,
+  SiSolidity,
+} from "@qwikest/icons/simpleicons";
 import Skill from "../skill/skill";
 
 export default component$(() => {
@@ -29,73 +32,73 @@ export default component$(() => {
       <h2 class="text-xl font-bold pb-4 pt-4">Skills</h2>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 rounded-xl w-full">
         <Skill name="Solidity">
-          <Ethereum q:slot="icon" />
+          <SiSolidity q:slot="icon" />
         </Skill>
         <Skill name="Web3">
-          <Ethereum q:slot="icon" />
+          <FaEthereum q:slot="icon" />
         </Skill>
         <Skill name="Ethers">
-          <Ethereum q:slot="icon" />
+          <FaEthereum q:slot="icon" />
         </Skill>
         <Skill name="Solana">
           <Solana q:slot="icon" />
         </Skill>
         <Skill name="Typescript">
-          <Typescript q:slot="icon" />
+          <SiTypescript q:slot="icon" />
         </Skill>
         <Skill name="Javascript">
-          <Javascript q:slot="icon" />
+          <FaJs q:slot="icon" />
         </Skill>
         <Skill name="Vue">
-          <Vue q:slot="icon" />
+          <FaVuejs q:slot="icon" />
         </Skill>
         <Skill name="Nuxt">
-          <Nuxt q:slot="icon" />
+          <SiNuxtdotjs q:slot="icon" />
         </Skill>
         <Skill name="React">
-          <React q:slot="icon" />
+          <FaReact q:slot="icon" />
         </Skill>
         <Skill name="React Native">
-          <React q:slot="icon" />
+          <FaReact q:slot="icon" />
         </Skill>
         <Skill name="Next JS">
-          <Next q:slot="icon" />
+          <SiNextdotjs q:slot="icon" />
         </Skill>
         <Skill name="Gatsby Js">
-          <Gatsby q:slot="icon" />
+          <SiGatsby q:slot="icon" />
         </Skill>
         <Skill name="Node Js">
-          <NodeJs q:slot="icon" />
+          <FaNodeJs q:slot="icon" />
         </Skill>
         <Skill name="Rust">
-          <Rust q:slot="icon" />
+          <FaRust q:slot="icon" />
         </Skill>
         <Skill name="HTML5">
-          <HTML5 q:slot="icon" />
+          <FaHtml5 q:slot="icon" />
         </Skill>
         <Skill name="CSS3">
-          <CSS3 q:slot="icon" />
+          <FaCss3 q:slot="icon" />
         </Skill>
         <Skill name="Sass">
-          <Sass q:slot="icon" />
+          <FaSass q:slot="icon" />
         </Skill>
         <Skill name="Git">
-          <Git q:slot="icon" />
+          <FaGitAlt q:slot="icon" />
         </Skill>
         <Skill name="Docker">
-          <Docker q:slot="icon" />
+          <FaDocker q:slot="icon" />
         </Skill>
         <Skill name="MongoDB">
-          <MongoDB q:slot="icon" />
+          <SiMongodb q:slot="icon" />
         </Skill>
         <Skill name="MySQL">
-          <MySQL q:slot="icon" />
+          <SiMysql q:slot="icon" />
         </Skill>
         <Skill name="Team working">
-          <TeamWork q:slot="icon" />
+          <FaUsersSolid q:slot="icon" />
         </Skill>
         <Skill name="Problem solving">
-          <ProblemSolving q:slot="icon" />
+          <FaWandMagicSparklesSolid q:slot="icon" />
         </Skill>
       </div>
     </div>
