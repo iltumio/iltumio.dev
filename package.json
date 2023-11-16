@@ -47,5 +47,8 @@
     "undici": "^5.22.1",
     "vite": "4.3.9",
     "vite-tsconfig-paths": "4.0.7"
+  },
+  "dependencies": {
+    "@qwikest/icons": "^0.0.13"
   }
 }

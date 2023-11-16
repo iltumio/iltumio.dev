@@ -23,7 +23,7 @@ export default component$(() => {
                   link={"https://www.linkedin.com/in/manuel-tumiati/"}
                   type="LinkedIn"
                 />
-                <Social link={"https://twitter.com/iltumio"} type="Twitter" />
+                <Social link={"https://x.com/iltumio"} type="Twitter" />
               </div>
             </div>
             <h2 class="text-xl">

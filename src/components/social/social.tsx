@@ -1,5 +1,9 @@
 import { component$ } from "@builder.io/qwik";
-import { LinkedIn, Twitter, Github } from "../icons";
+import {
+  SiX as Twitter,
+  SiGithub as Github,
+  SiLinkedin as LinkedIn,
+} from "@qwikest/icons/simpleicons";
 
 export const SocialIcons = { LinkedIn, Twitter, Github };
 

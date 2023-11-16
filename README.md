@@ -1,5 +1,5 @@
 # Manuel Tumiati 🧑‍💻
-## Blockchain enthusiast & engineer
+## Web3 CTO & Blockchain Engineer
 
 I am an enthusiastic software engineer with a specialization in blockchain technology, covering various aspects ranging from architecture design to smart contract development. My passion lies in leveraging the power of blockchain to create innovative solutions and drive technological advancements.
 
@@ -9,8 +9,9 @@ I am an enthusiastic software engineer with a specialization in blockchain techn
 ## Social
 
 - [LinkedIn](https://linkedin.com/in/manuel-tumiati)
-- [Twitter](https://twitter.com/iltumio)
+- [Twitter](https://x.com/iltumio)
 - [Website](https://iltumio.dev)
+- [Decentralized Website](https://iltumio.eth.limo)
 
 ---
 
