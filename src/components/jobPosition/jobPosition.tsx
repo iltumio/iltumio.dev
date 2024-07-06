@@ -12,11 +12,11 @@ type JobPositionProps = {
 export default component$(
   ({ image, name, description, from, to, role, link }: JobPositionProps) => {
     return (
-      <a href={link} target="_blank">
+      <a href={link} target="_blank" rel="noreferrer" class="flex justify-center">
         <div class="flex flex-row">
           <div class="flex items-center justify-center p-4">
             <div class="w-14 h-14">
-              <img src={image} alt="" />
+              <img src={image} alt="" height="50px" width="50px" class="object-contain"/>
             </div>
           </div>
           <div class="flex flex-col">
