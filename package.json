@@ -26,29 +26,30 @@
     "qwik": "qwik"
   },
   "devDependencies": {
-    "@builder.io/qwik": "1.1.4",
-    "@builder.io/qwik-city": "1.1.4",
-    "@netlify/edge-functions": "^2.0.0",
-    "@netlify/vite-plugin-netlify-edge": "1.1.2",
-    "@types/eslint": "8.21.3",
-    "@types/node": "^18.16.12",
-    "@typescript-eslint/eslint-plugin": "5.56.0",
-    "@typescript-eslint/parser": "5.56.0",
-    "autoprefixer": "^10.4.14",
-    "eslint": "8.36.0",
-    "eslint-plugin-qwik": "0.24.0",
-    "netlify-cli": "^12.14.0",
-    "node-fetch": "3.3.1",
-    "postcss": "^8.4.23",
-    "prettier": "2.8.7",
-    "sass": "^1.62.1",
-    "tailwindcss": "^3.3.2",
-    "typescript": "5.0.4",
-    "undici": "^5.22.1",
-    "vite": "4.3.9",
-    "vite-tsconfig-paths": "4.0.7"
+    "@builder.io/qwik": "1.6.0",
+    "@builder.io/qwik-city": "1.6.0",
+    "@netlify/edge-functions": "^2.9.0",
+    "@netlify/vite-plugin-netlify-edge": "1.1.3",
+    "@types/eslint": "8.56.10",
+    "@types/node": "^20.14.10",
+    "@typescript-eslint/eslint-plugin": "7.15.0",
+    "@typescript-eslint/parser": "7.15.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "9.6.0",
+    "eslint-plugin-qwik": "1.6.0",
+    "netlify-cli": "^17.33.0",
+    "node-fetch": "3.3.2",
+    "postcss": "^8.4.39",
+    "prettier": "3.3.2",
+    "sass": "^1.77.6",
+    "tailwindcss": "^3.4.4",
+    "typescript": "5.5.3",
+    "undici": "^6.19.2",
+    "vite": "5.3.3",
+    "vite-tsconfig-paths": "4.3.2"
   },
   "dependencies": {
     "@qwikest/icons": "^0.0.13"
-  }
+  },
+  "packageManager": "pnpm@9.1.0+sha256.22e36fba7f4880ecf749a5ca128b8435da085ecd49575e7fb9e64d6bf4fad394"
 }

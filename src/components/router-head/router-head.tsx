@@ -44,16 +44,16 @@ export const RouterHead = component$(() => {
         content="Manuel Tumiati | Web3 CTO & Blockchain engineer"
       />
 
-      {head.meta.map((m) => (
-        <meta {...m} />
+      {head.meta.map(({key, ...m}) => (
+        <meta key={key} {...m} />
       ))}
 
-      {head.links.map((l) => (
-        <link {...l} />
+      {head.links.map(({key,...l}) => (
+        <link key={key} {...l} />
       ))}
 
-      {head.styles.map((s) => (
-        <style {...s.props} dangerouslySetInnerHTML={s.style} />
+      {head.styles.map(({key, style, props}) => (
+        <style key={key} {...props} dangerouslySetInnerHTML={style} />
       ))}
     </>
   );
