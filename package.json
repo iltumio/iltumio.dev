@@ -1,6 +1,6 @@
 {
-  "name": "my-qwik-basic-starter",
-  "description": "Recommended for your first Qwik app",
+  "name": "iltumio.dev",
+  "description": "My personal website",
   "engines": {
     "node": ">=18.0.0"
   },
@@ -10,8 +10,8 @@
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
     "build.server": "npm run build.server.netlify",
-    "build.server.netlify": "vite build -c adapters/netlify-edge/vite.config.ts",
-    "build.server.fleek": "vite build -c adapters/static/vite.config.ts",
+    "build.server.netlify": "vite build -c adapters/netlify-edge/vite.config.mts",
+    "build.server.fleek": "vite build -c adapters/static/vite.config.mts",
     "build.types": "tsc --incremental --noEmit",
     "build.fleek": "npm run build.types && npm run build.client && npm run build.server.fleek && npm run lint",
     "deploy": "netlify deploy --build",
@@ -20,6 +20,7 @@
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
     "lint": "eslint \"src/**/*.ts*\"",
+    "lint.fix": "eslint --fix \"src/**/*.ts*\"",
     "preview": "qwik build preview && vite preview --open",
     "serve": "netlify dev",
     "start": "vite --open --mode ssr",
@@ -28,9 +29,11 @@
   "devDependencies": {
     "@builder.io/qwik": "1.6.0",
     "@builder.io/qwik-city": "1.6.0",
+    "@eslint/js": "^9.6.0",
     "@netlify/edge-functions": "^2.9.0",
     "@netlify/vite-plugin-netlify-edge": "1.1.3",
     "@types/eslint": "8.56.10",
+    "@types/eslint__js": "^8.42.3",
     "@types/node": "^20.14.10",
     "@typescript-eslint/eslint-plugin": "7.15.0",
     "@typescript-eslint/parser": "7.15.0",
@@ -44,6 +47,7 @@
     "sass": "^1.77.6",
     "tailwindcss": "^3.4.4",
     "typescript": "5.5.3",
+    "typescript-eslint": "^7.15.0",
     "undici": "^6.19.2",
     "vite": "5.3.3",
     "vite-tsconfig-paths": "4.3.2"
