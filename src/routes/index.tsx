@@ -7,10 +7,11 @@ export default component$(() => {
 
 const description: DocumentMeta = {
   name: "description",
-  content: "Web3 and blockchain engineer from Milan",
+  content:
+    "Redefining digital identity with seamless, innovative solutions for everyone at Zyphe Inc",
 };
 
 export const head: DocumentHead = {
-  title: "Manuel Tumiati | Blockchain Engineer",
+  title: "Manuel Tumiati | Web3 CTO & Blockchain Engineer",
   meta: [description],
 };

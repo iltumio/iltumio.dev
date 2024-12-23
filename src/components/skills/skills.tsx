@@ -31,8 +31,14 @@ export default component$(() => {
     <div class="flex flex-col items-center">
       <h2 class="text-xl font-bold pb-4 pt-4">Skills</h2>
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 rounded-xl w-full">
+        <Skill name="Rust">
+          <FaRust q:slot="icon" />
+        </Skill>
         <Skill name="Solidity">
           <SiSolidity q:slot="icon" />
+        </Skill>
+        <Skill name="Typescript">
+          <SiTypescript q:slot="icon" />
         </Skill>
         <Skill name="Web3">
           <FaEthereum q:slot="icon" />
@@ -42,9 +48,6 @@ export default component$(() => {
         </Skill>
         <Skill name="Solana">
           <Solana q:slot="icon" />
-        </Skill>
-        <Skill name="Typescript">
-          <SiTypescript q:slot="icon" />
         </Skill>
         <Skill name="Javascript">
           <FaJs q:slot="icon" />
@@ -69,9 +72,6 @@ export default component$(() => {
         </Skill>
         <Skill name="Node Js">
           <FaNodeJs q:slot="icon" />
-        </Skill>
-        <Skill name="Rust">
-          <FaRust q:slot="icon" />
         </Skill>
         <Skill name="HTML5">
           <FaHtml5 q:slot="icon" />

@@ -32,11 +32,13 @@ export default component$(() => {
               </strong>
             </h2>
             <p class="mt-4 sm:leading-relaxed sm:text-l text-justify md:pl-0 md:pr-0 pl-4 pr-4">
-              I am an enthusiastic software engineer with a specialization in
-              blockchain technology, covering various aspects ranging from
-              architecture design to smart contract development. My passion lies
-              in leveraging the power of blockchain to create innovative
-              solutions and drive technological advancements.
+              I am a passionate software engineer specializing in blockchain
+              technology, with expertise in architecture design, smart contract
+              development, and decentralized solutions. I am deeply committed to
+              advancing <strong>digital identity</strong> using self-sovereign
+              identity principles and <strong>zero-knowledge proofs</strong>,
+              leveraging their potential to drive innovation and solve complex
+              challenges.
             </p>
           </div>
         </div>
