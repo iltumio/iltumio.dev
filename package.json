@@ -1,10 +1,7 @@
 {
   "name": "iltumio.dev",
   "description": "My personal website",
-  "name": "iltumio.dev",
-  "description": "My personal website",
   "engines": {
-    "node": ">=18.0.0"
     "node": ">=18.0.0"
   },
   "private": true,
@@ -15,8 +12,6 @@
     "build.server": "npm run build.server.netlify",
     "build.server.netlify": "vite build -c adapters/netlify-edge/vite.config.mts",
     "build.server.fleek": "vite build -c adapters/static/vite.config.mts",
-    "build.server.netlify": "vite build -c adapters/netlify-edge/vite.config.mts",
-    "build.server.fleek": "vite build -c adapters/static/vite.config.mts",
     "build.types": "tsc --incremental --noEmit",
     "build.fleek": "npm run build.types && npm run build.client && npm run build.server.fleek && npm run lint",
     "deploy": "netlify deploy --build",
@@ -25,7 +20,6 @@
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
     "lint": "eslint \"src/**/*.ts*\"",
-    "lint.fix": "eslint --fix \"src/**/*.ts*\"",
     "lint.fix": "eslint --fix \"src/**/*.ts*\"",
     "preview": "qwik build preview && vite preview --open",
     "serve": "netlify dev",
@@ -61,8 +55,6 @@
   },
   "dependencies": {
     "@qwikest/icons": "^0.0.13"
-  },
-  "packageManager": "pnpm@9.1.0+sha256.22e36fba7f4880ecf749a5ca128b8435da085ecd49575e7fb9e64d6bf4fad394"
   },
   "packageManager": "pnpm@9.1.0+sha256.22e36fba7f4880ecf749a5ca128b8435da085ecd49575e7fb9e64d6bf4fad394"
 }
