@@ -2,6 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import CurrentJobs from "~/components/currentJobs/currentJobs";
 import Skills from "~/components/skills/skills";
 import Header from "../components/header/header";
+import Cta from "~/components/cta/cta";
 
 export default component$(() => {
   return (
@@ -11,6 +12,9 @@ export default component$(() => {
           <Header />
           <section>
             <CurrentJobs />
+          </section>
+          <section>
+            <Cta />
           </section>
           <section>
             <Skills />
