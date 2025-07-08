@@ -1,0 +1,11 @@
+/workspace/target/debug/deps/leptos_server-46652bd4a60fd8f1.d: /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/lib.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/action.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/local_resource.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/multi_action.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/once_resource.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/resource.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/shared.rs
+
+/workspace/target/debug/deps/libleptos_server-46652bd4a60fd8f1.rmeta: /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/lib.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/action.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/local_resource.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/multi_action.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/once_resource.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/resource.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/shared.rs
+
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/lib.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/action.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/local_resource.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/multi_action.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/once_resource.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/resource.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/leptos_server-0.7.8/src/shared.rs:

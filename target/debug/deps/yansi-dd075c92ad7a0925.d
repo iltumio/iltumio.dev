@@ -1,0 +1,14 @@
+/workspace/target/debug/deps/yansi-dd075c92ad7a0925.d: /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/lib.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/macros.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/windows.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/attr_quirk.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/style.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/color.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/paint.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/global.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/condition.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/set.rs
+
+/workspace/target/debug/deps/libyansi-dd075c92ad7a0925.rmeta: /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/lib.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/macros.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/windows.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/attr_quirk.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/style.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/color.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/paint.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/global.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/condition.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/set.rs
+
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/lib.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/macros.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/windows.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/attr_quirk.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/style.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/color.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/paint.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/global.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/condition.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yansi-1.0.1/src/set.rs:

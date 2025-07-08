@@ -1,0 +1,12 @@
+/workspace/target/wasm32-unknown-unknown/release/deps/serde_qs-bd44607e280ef79c.d: /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/lib.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/de/mod.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/de/parse.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/error.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/ser.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/utils.rs
+
+/workspace/target/wasm32-unknown-unknown/release/deps/libserde_qs-bd44607e280ef79c.rlib: /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/lib.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/de/mod.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/de/parse.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/error.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/ser.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/utils.rs
+
+/workspace/target/wasm32-unknown-unknown/release/deps/libserde_qs-bd44607e280ef79c.rmeta: /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/lib.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/de/mod.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/de/parse.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/error.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/ser.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/utils.rs
+
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/lib.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/de/mod.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/de/parse.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/error.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/ser.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_qs-0.13.0/src/utils.rs:

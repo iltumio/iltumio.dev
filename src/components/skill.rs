@@ -1,4 +1,4 @@
-use leptos::*;
+use leptos::prelude::*;
 
 #[component]
 pub fn Skill(
@@ -10,7 +10,7 @@ pub fn Skill(
             <div class="flex p-2">
                 {children()}
             </div>
-            <div class="text-bold text-l">{name}</div>
+            <span class="text-xs text-gray-700">{name}</span>
         </div>
     }
 }
