@@ -1,30 +1,37 @@
 import { component$ } from "@builder.io/qwik";
-import {
-  QwikCityProvider as QwikCity,
-  RouterOutlet,
-  ServiceWorkerRegister,
-} from "@builder.io/qwik-city";
-import { RouterHead } from "./components/router-head/router-head";
+import CurrentJobs from "~/components/currentJobs/currentJobs";
+import Skills from "~/components/skills/skills";
+import Header from "./components/header/header";
+import Cta from "~/components/cta/cta";
 
 import "./global.css";
 
 export default component$(() => {
-  /**
-   * The root of a QwikCity site always start with the <QwikCity> component,
-   * immediately followed by the document's <head> and <body>.
-   *
-   * Dont remove the `<head>` and `<body>` elements.
-   */
   return (
-    <QwikCity>
+    <html>
       <head>
         <meta charset="utf-8" />
-        <RouterHead />
+        <title>Manuel Tumiati | Web3 CTO & Blockchain Engineer</title>
+        <meta name="description" content="Redefining digital identity with seamless, innovative solutions for everyone at Zyphe Inc" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body lang="en">
-        <RouterOutlet />
-        <ServiceWorkerRegister />
+        <main class="bg-gray-50 min-h-screen flex flex-col justify-center items-center">
+          <div class="p-2 lg:p-0 lg:max-w-6xl flex flex-col">
+            <Header />
+            <section>
+              <CurrentJobs />
+            </section>
+            <section>
+              <Cta />
+            </section>
+            <section>
+              <Skills />
+            </section>
+          </div>
+        </main>
+        <footer></footer>
       </body>
-    </QwikCity>
+    </html>
   );
 });
