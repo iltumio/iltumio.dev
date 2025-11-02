@@ -23,6 +23,7 @@ import {
   SiGatsby,
   SiTypescript,
   SiSolidity,
+  SiStellar,
 } from "@qwikest/icons/simpleicons";
 import Skill from "../skill/skill";
 
@@ -48,6 +49,9 @@ export default component$(() => {
         </Skill>
         <Skill name="Solana">
           <Solana q:slot="icon" />
+        </Skill>
+        <Skill name="Stellar">
+          <SiStellar q:slot="icon" />
         </Skill>
         <Skill name="Javascript">
           <FaJs q:slot="icon" />
