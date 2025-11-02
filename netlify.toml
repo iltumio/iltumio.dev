@@ -2,6 +2,9 @@
 publish = "dist"
 command = "pnpm run build"
 
+[build.environment]
+NODE_VERSION = "21"
+
 [[edge_functions]]
 path = "/*"
 function = "entry.netlify-edge"

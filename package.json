@@ -2,7 +2,7 @@
   "name": "iltumio.dev",
   "description": "My personal website",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=21.0.0"
   },
   "private": true,
   "scripts": {
@@ -27,28 +27,27 @@
     "qwik": "qwik"
   },
   "devDependencies": {
-    "@builder.io/qwik": "1.12.0",
-    "@builder.io/qwik-city": "1.12.0",
-    "@eslint/js": "^9.17.0",
-    "@netlify/edge-functions": "^2.11.1",
+    "@builder.io/qwik": "1.17.1",
+    "@builder.io/qwik-city": "1.17.1",
+    "@eslint/js": "^9.39.0",
+    "@netlify/edge-functions": "^2.19.0",
     "@netlify/vite-plugin-netlify-edge": "1.1.3",
     "@types/eslint": "9.6.1",
     "@types/eslint__js": "^8.42.3",
-    "@types/node": "^22.10.2",
+    "@types/node": "^22.18.13",
     "@typescript-eslint/eslint-plugin": "8.18.1",
     "@typescript-eslint/parser": "8.18.1",
-    "autoprefixer": "^10.4.20",
+    "autoprefixer": "^10.4.21",
     "eslint": "9.17.0",
     "eslint-plugin-qwik": "1.12.0",
     "netlify-cli": "^17.38.1",
     "node-fetch": "3.3.2",
-    "postcss": "^8.4.49",
+    "postcss": "^8.5.6",
     "prettier": "3.4.2",
-    "sass": "^1.83.0",
-    "tailwindcss": "^3.4.17",
+    "sass": "^1.93.3",
+    "tailwindcss": "^3.4.18",
     "typescript": "5.7.2",
-    "typescript-eslint": "^8.18.1",
-    "undici": "^7.2.0",
+    "typescript-eslint": "^8.46.2",
     "vite": "6.0.5",
     "vite-plugin-compression": "^0.5.1",
     "vite-tsconfig-paths": "5.1.4"
@@ -56,5 +55,5 @@
   "dependencies": {
     "@qwikest/icons": "^0.0.13"
   },
-  "packageManager": "pnpm@9.1.0+sha256.22e36fba7f4880ecf749a5ca128b8435da085ecd49575e7fb9e64d6bf4fad394"
+  "packageManager": "pnpm@10.20.0"
 }

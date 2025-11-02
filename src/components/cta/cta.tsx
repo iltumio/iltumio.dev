@@ -1,44 +1,22 @@
-import { component$, useSignal, useVisibleTask$, $ } from "@builder.io/qwik";
-import { addCalendlyScripts } from "~/utils";
+import { component$ } from "@builder.io/qwik";
 import { HiCalendarDaysSolid } from "@qwikest/icons/heroicons";
 
-declare global {
-  interface Window {
-    Calendly: {
-      initPopupWidget: (options: { url: string }) => void;
-    };
-  }
-}
-
 export default component$(() => {
-  const scriptsAdded = useSignal(false);
-
-  useVisibleTask$(() => {
-    addCalendlyScripts();
-    scriptsAdded.value = true;
-  });
-
-  const handleClick = $(() => {
-    window.Calendly.initPopupWidget({
-      url: "https://calendly.com/manuel-zyphe/meet-manuel",
-    });
-  });
-
   return (
     <div class="flex flex-col items-center">
       <h2 class="text-xl font-bold pb-4 pt-4">Let's connect</h2>
       <div class="flex justify-center items-center">
-        {scriptsAdded.value && (
-          <>
-            <button
-              class="bg-blue-500 text-white p-4 rounded-full flex items-center gap-2 text-2xl hover:bg-blue-600 shadow-lg"
-              onClick$={handleClick}
-            >
-              <HiCalendarDaysSolid />
-              Schedule time with me
-            </button>
-          </>
-        )}
+        <a
+          href="https://calendar.notion.so/meet/manueltumiati/free-booking"
+          target="_blank"
+          rel="noreferrer"
+          class="btn-main-link flex items-center gap-2 text-xl shadow-lg"
+        >
+          <span class="bg-white text-black p-4 rounded-full flex items-center gap-2 hover:bg-gray-100 transition-colors w-full">
+            <HiCalendarDaysSolid />
+            Book a meeting
+          </span>
+        </a>
       </div>
     </div>
   );
