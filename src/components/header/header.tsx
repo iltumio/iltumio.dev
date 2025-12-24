@@ -5,54 +5,53 @@ import { ThemeToggle } from "../theme-toggle/theme-toggle";
 
 export default component$(() => {
   return (
-    <header>
-      <section class="flex justify-center">
-        <div class="flex flex-col lg:flex-row justify-between items-center">
+    <header class="w-full pt-12 pb-8">
+      <div class="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
+        <div class="relative group shrink-0">
+          <div class="absolute -inset-1 bg-linear-to-r from-pink-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
           <img
-            class="w-36 h-36 rounded-xl ring-gray-300 dark:ring-gray-500"
+            class="relative w-40 h-40 lg:w-48 lg:h-48 rounded-2xl object-cover shadow-2xl ring-4 ring-white dark:ring-gray-800"
             src={ProfilePicture}
-            alt="Bordered avatar"
+            alt="Manuel Tumiati"
+            width={192}
+            height={192}
           />
-          <div class="flex flex-col text-center justify-center content-center lg:pl-12 lg:text-left">
-            <div class="flex flex-col lg:flex-row">
-              <h1 class="text-3xl font-extrabold sm:text-5xl max-w-1/2">
-                Manuel Tumiati
-              </h1>
-              <div class="flex flex-row justify-evenly items-center lg:w-1/2 text-3xl pt-4 pb-4 md:pb-2">
-                <Social link={"https://github.com/iltumio"} type="Github" />
-                <Social
-                  link={"https://www.linkedin.com/in/manuel-tumiati/"}
-                  type="LinkedIn"
-                />
-                <Social link={"https://x.com/iltumio"} type="Twitter" />
-                <ThemeToggle />
-              </div>
-            </div>
-            <h2 class="text-xl">
-              <strong class="font-extrabold text-red-700 sm:block">
-                Web3 CTO & Blockchain Engineer
-              </strong>
-            </h2>
-            <nav class="mt-4 mb-4">
-              <a
-                href="/blog"
-                class="text-red-700 hover:text-red-800 font-semibold transition-colors inline-block"
-              >
-                Blog
-              </a>
-            </nav>
-            <p class="mt-4 sm:leading-relaxed sm:text-l text-justify md:pl-0 md:pr-0 pl-4 pr-4">
-              I am a passionate software engineer specializing in blockchain
-              technology, with expertise in architecture design, smart contract
-              development, and decentralized solutions. I am deeply committed to
-              advancing <strong>digital identity</strong> using self-sovereign
-              identity principles and <strong>zero-knowledge proofs</strong>,
-              leveraging their potential to drive innovation and solve complex
-              challenges.
-            </p>
-          </div>
         </div>
-      </section>
+
+        <div class="flex flex-col text-center lg:text-left flex-1 space-y-4">
+          <div class="space-y-2">
+            <h1 class="text-4xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+              Manuel <span class="text-transparent bg-clip-text bg-linear-to-r from-purple-600 to-pink-600">Tumiati</span>
+            </h1>
+            <h2 class="text-xl lg:text-2xl font-medium text-gray-600 dark:text-gray-300">
+              Web3 CTO & Blockchain Engineer
+            </h2>
+          </div>
+
+          <div class="flex items-center justify-center lg:justify-start gap-4">
+            <div class="flex gap-4 p-2 bg-white dark:bg-gray-800 rounded-full shadow-sm border border-gray-100 dark:border-gray-700">
+              <Social link={"https://github.com/iltumio"} type="Github" />
+              <Social
+                link={"https://www.linkedin.com/in/manuel-tumiati/"}
+                type="LinkedIn"
+              />
+              <Social link={"https://x.com/iltumio"} type="Twitter" />
+            </div>
+            <ThemeToggle />
+             <a
+              href="/blog"
+              class="px-6 py-2 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold text-sm hover:opacity-90 transition-opacity"
+            >
+              Blog
+            </a>
+          </div>
+
+          <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            I specialize in <span class="font-semibold text-gray-900 dark:text-white">blockchain architecture</span> and <span class="font-semibold text-gray-900 dark:text-white">smart contract development</span>. 
+            Deeply committed to advancing digital identity through self-sovereign identity principles and <span class="font-semibold text-gray-900 dark:text-white">zero-knowledge proofs</span>.
+          </p>
+        </div>
+      </div>
     </header>
   );
 });

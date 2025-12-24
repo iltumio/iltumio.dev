@@ -22,25 +22,25 @@ export default component$(() => {
   const post = usePost();
 
   return (
-    <main class="bg-gray-50 min-h-screen flex flex-col items-center pt-8">
-      <div class="p-2 lg:p-0 lg:max-w-6xl flex flex-col w-full">
+    <main class="bg-gray-50 dark:bg-gray-950 min-h-screen flex flex-col items-center transition-colors duration-300">
+      <div class="w-full max-w-5xl px-6 lg:px-8 py-8 lg:py-16">
         <CompactHeader showBlogLink={true} />
         
-        <section class="mt-8 w-full">
-          <article class="bg-white rounded-lg shadow-lg p-8 md:p-12">
-            <header class="mb-8">
-              <nav class="mb-4">
+        <section class="w-full">
+          <article class="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-8 md:p-12 transition-all duration-300">
+            <header class="mb-10 border-b border-gray-100 dark:border-gray-800 pb-10">
+              <nav class="mb-6">
                 <a
                   href="/blog"
-                  class="text-red-700 hover:text-red-800 font-semibold transition-colors inline-block text-sm"
+                  class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 font-semibold transition-colors inline-flex items-center gap-2 text-sm"
                 >
-                  ← Back to Blog
+                  &larr; Back to Blog
                 </a>
               </nav>
-              <h1 class="text-4xl font-extrabold text-gray-900 mb-4">
+              <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 tracking-tight leading-tight">
                 {post.value.title}
               </h1>
-              <div class="flex items-center text-sm text-gray-500 mb-6">
+              <div class="flex items-center text-sm font-medium text-gray-500 dark:text-gray-400">
                 <time dateTime={post.value.date}>
                   {new Date(post.value.date).toLocaleDateString("en-US", {
                     year: "numeric",
@@ -52,7 +52,14 @@ export default component$(() => {
             </header>
 
             <div
-              class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-red-700 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-code:text-red-700 prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-gray-100"
+              class="prose prose-lg dark:prose-invert max-w-none 
+                prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white 
+                prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-p:leading-relaxed
+                prose-a:text-purple-600 dark:prose-a:text-purple-400 prose-a:no-underline hover:prose-a:underline 
+                prose-strong:text-gray-900 dark:prose-strong:text-white 
+                prose-code:text-purple-600 dark:prose-code:text-purple-400 prose-code:bg-purple-50 dark:prose-code:bg-purple-900/20 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none
+                prose-pre:bg-gray-900 dark:prose-pre:bg-gray-800 prose-pre:text-gray-100 prose-pre:rounded-xl prose-pre:shadow-lg
+                prose-img:rounded-xl prose-img:shadow-md"
               dangerouslySetInnerHTML={post.value.htmlContent}
             />
           </article>
@@ -79,4 +86,3 @@ export const head: DocumentHead = ({ resolveValue }) => {
     ],
   };
 };
-

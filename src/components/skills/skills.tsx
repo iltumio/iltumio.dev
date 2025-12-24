@@ -29,9 +29,13 @@ import Skill from "../skill/skill";
 
 export default component$(() => {
   return (
-    <div class="flex flex-col items-center">
-      <h2 class="text-xl font-bold pb-4 pt-4">Skills</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 rounded-xl w-full">
+    <div class="flex flex-col w-full">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Skills & Technologies</h2>
+        <div class="h-1 flex-1 bg-gray-100 dark:bg-gray-800 ml-6 rounded-full"></div>
+      </div>
+      
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 w-full">
         <Skill name="Rust">
           <FaRust q:slot="icon" />
         </Skill>

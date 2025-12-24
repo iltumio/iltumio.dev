@@ -1,6 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import ProfilePicture from "../../images/ProfilePicture.png";
 import Social from "../social/social";
+import { ThemeToggle } from "../theme-toggle/theme-toggle";
 
 interface CompactHeaderProps {
   showBlogLink?: boolean;
@@ -8,27 +9,34 @@ interface CompactHeaderProps {
 
 export default component$(({ showBlogLink = false }: CompactHeaderProps) => {
   return (
-    <header class="mb-6 w-full">
-      <section class="w-full">
-        <div class="flex flex-row items-start gap-4 lg:gap-6 w-full">
-          <img
-            class="w-16 h-16 lg:w-20 lg:h-20 rounded-xl ring-gray-300 dark:ring-gray-500 flex-shrink-0"
-            src={ProfilePicture}
-            alt="Bordered avatar"
-          />
-          <div class="flex flex-col flex-1 min-w-0">
-            <div class="flex flex-row items-center justify-between gap-4 flex-wrap">
-              <div class="flex flex-row items-center gap-3 flex-wrap">
-                <h1 class="text-xl lg:text-2xl font-extrabold whitespace-nowrap">
-                  Manuel Tumiati
-                </h1>
-                <h2 class="text-sm lg:text-base whitespace-nowrap">
-                  <strong class="font-extrabold text-red-700">
-                    Web3 CTO & Blockchain Engineer
-                  </strong>
-                </h2>
-              </div>
-              <div class="flex flex-row gap-3 text-xl lg:text-2xl">
+    <header class="mb-12 w-full border-b border-gray-100 dark:border-gray-800 pb-8">
+      <div class="flex flex-col md:flex-row items-center md:items-start gap-6 w-full">
+        <a href="/" class="shrink-0 group">
+          <div class="relative">
+            <div class="absolute -inset-1 bg-linear-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+            <img
+              class="relative w-16 h-16 md:w-20 md:h-20 rounded-xl object-cover shadow-lg ring-2 ring-white dark:ring-gray-800"
+              src={ProfilePicture}
+              alt="Manuel Tumiati"
+              width={80}
+              height={80}
+            />
+          </div>
+        </a>
+        
+        <div class="flex flex-col flex-1 min-w-0 items-center md:items-start text-center md:text-left">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-4 w-full">
+            <div>
+              <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                Manuel <span class="text-transparent bg-clip-text bg-linear-to-r from-purple-600 to-pink-600">Tumiati</span>
+              </h1>
+              <p class="text-sm font-medium text-gray-500 dark:text-gray-400">
+                Web3 CTO & Blockchain Engineer
+              </p>
+            </div>
+            
+            <div class="flex items-center gap-3">
+              <div class="flex gap-3 p-1.5 bg-white dark:bg-gray-800 rounded-full shadow-sm border border-gray-100 dark:border-gray-700">
                 <Social link={"https://github.com/iltumio"} type="Github" />
                 <Social
                   link={"https://www.linkedin.com/in/manuel-tumiati/"}
@@ -36,27 +44,28 @@ export default component$(({ showBlogLink = false }: CompactHeaderProps) => {
                 />
                 <Social link={"https://x.com/iltumio"} type="Twitter" />
               </div>
+              <ThemeToggle />
             </div>
-            <nav class="mt-2 flex gap-4">
-              <a
-                href="/"
-                class="text-red-700 hover:text-red-800 font-semibold transition-colors text-sm"
-              >
-                Home
-              </a>
-              {showBlogLink && (
-                <a
-                  href="/blog"
-                  class="text-red-700 hover:text-red-800 font-semibold transition-colors text-sm"
-                >
-                  Blog
-                </a>
-              )}
-            </nav>
           </div>
+
+          <nav class="mt-4 flex gap-6">
+            <a
+              href="/"
+              class="text-sm font-semibold text-gray-600 hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400 transition-colors"
+            >
+              Home
+            </a>
+            {showBlogLink && (
+              <a
+                href="/blog"
+                class="text-sm font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition-colors"
+              >
+                Blog
+              </a>
+            )}
+          </nav>
         </div>
-      </section>
+      </div>
     </header>
   );
 });
-

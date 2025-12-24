@@ -1,28 +1,27 @@
 import { component$ } from "@builder.io/qwik";
 import {
   SiX as Twitter,
-  SiGithub as Github,
   SiLinkedin as LinkedIn,
+  SiGithub as Github,
 } from "@qwikest/icons/simpleicons";
-
-export const SocialIcons = { LinkedIn, Twitter, Github };
 
 type SocialProps = {
   link: string;
-  type: keyof typeof SocialIcons;
-  size?: number;
+  type: "Github" | "Twitter" | "LinkedIn";
 };
 
-export default component$((props: SocialProps) => {
-  const Icon = SocialIcons[props.type];
-  const iconSize = props.size || 30;
+export default component$(({ link, type }: SocialProps) => {
   return (
     <a
-      href={props.link}
+      href={link}
       target="_blank"
-      class="hover:text-cyan-600 transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300"
+      rel="noreferrer"
+      aria-label={`${type} profile`}
+      class="text-gray-400 hover:text-gray-900 dark:text-gray-500 dark:hover:text-white transition-all duration-300 transform hover:scale-110"
     >
-      {<Icon width={iconSize} height={iconSize} />}
+      {type === "Github" && <Github class="w-6 h-6" />}
+      {type === "Twitter" && <Twitter class="w-6 h-6" />}
+      {type === "LinkedIn" && <LinkedIn class="w-6 h-6" />}
     </a>
   );
 });

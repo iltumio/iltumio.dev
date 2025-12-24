@@ -27,13 +27,6 @@ export const RouterHead = component$(() => {
         href="/favicon-16x16.png"
       />
 
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap"
-        rel="stylesheet"
-      />
-
       <meta
         property="og:site_name"
         content="Manuel Tumiati | Web3 CTO & Blockchain engineer"
