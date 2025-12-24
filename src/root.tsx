@@ -19,9 +19,24 @@ export default component$(() => {
     <QwikCity>
       <head>
         <meta charset="utf-8" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
         <RouterHead />
+        <script
+          dangerouslySetInnerHTML={`
+            (function() {
+              const storedTheme = localStorage.getItem("theme");
+              if (storedTheme === "dark") {
+                document.documentElement.classList.add("dark");
+              } else {
+                document.documentElement.classList.remove("dark");
+              }
+            })();
+          `}
+        />
       </head>
-      <body lang="en">
+      <body lang="en" class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-white transition-colors duration-300 font-sans antialiased selection:bg-purple-200 selection:text-purple-900">
         <RouterOutlet />
         <ServiceWorkerRegister />
       </body>
