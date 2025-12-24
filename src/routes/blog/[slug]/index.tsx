@@ -1,16 +1,15 @@
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { getPostBySlug, getAllSlugs } from "~/lib/blog";
-import { notFound } from "@builder.io/qwik-city";
 import CompactHeader from "~/components/compact-header/compact-header";
 
 export const usePost = routeLoader$(async ({ params, status }) => {
   try {
     const post = await getPostBySlug(params.slug);
     return post;
-  } catch (error) {
+  } catch {
     status(404);
-    throw notFound();
+    return null;
   }
 });
 
@@ -20,6 +19,18 @@ export const usePostSlugs = routeLoader$(async () => {
 
 export default component$(() => {
   const post = usePost();
+
+  if (!post.value) {
+    return (
+      <main class="bg-gray-50 dark:bg-gray-950 min-h-screen flex flex-col items-center">
+        <div class="w-full max-w-5xl px-6 lg:px-8 py-8 lg:py-16 text-center">
+           <CompactHeader showBlogLink={true} />
+           <h1 class="text-3xl font-bold mt-12 text-gray-900 dark:text-white">Post not found</h1>
+           <a href="/blog" class="text-purple-600 hover:underline mt-4 block">Back to blog</a>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main class="bg-gray-50 dark:bg-gray-950 min-h-screen flex flex-col items-center transition-colors duration-300">
