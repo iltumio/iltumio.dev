@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
-import { getAllPosts, type BlogPost } from "../../lib/blog";
-import CompactHeader from "../../components/compact-header/compact-header";
+import { getAllPosts, type BlogPost } from "~/lib/blog";
+import CompactHeader from "~/components/compact-header/compact-header";
 
 export const useBlogPosts = routeLoader$(async () => {
   return await getAllPosts();
