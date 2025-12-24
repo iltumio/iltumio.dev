@@ -1,8 +1,8 @@
 # Build
-build
-dist
-lib
-server
+/build/
+/dist/
+/lib/
+/server/
 functions/**/*.js
 netlify
 
