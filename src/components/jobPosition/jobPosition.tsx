@@ -3,6 +3,7 @@ import {
   SiX as Twitter,
   SiLinkedin as LinkedIn,
 } from "@qwikest/icons/simpleicons";
+import { LuGlobe as Globe } from "@qwikest/icons/lucide";
 
 type JobPositionProps = {
   image: string;
@@ -34,7 +35,7 @@ export default component$(
         class={`flex justify-center shadow-lg p-4 rounded-lg mx-2 mt-4 ${highlight ? "bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100" : "bg-gray-100"}`}
       >
         <div class="flex flex-row w-full">
-          <div class="flex items-center justify-center p-4">
+          <div class="flex justify-center items-center p-4">
             <div class="w-14 h-14">
               <a href={link} target="_blank" rel="noreferrer">
                 <img src={image} alt="" width={50} height={50} />
@@ -42,20 +43,31 @@ export default component$(
             </div>
           </div>
           <div class="flex flex-col flex-1">
-            <div class="text-bold text-xl pb-2">{name}</div>
-            <div class="text-bold text-sm pb-2">{role}</div>
-            <span class="text-bold text-sm text-gray-500 pb-2">{`${from} - ${to}`}</span>
-            <div class="text-bold text-sm text-gray-600 pb-2">
+            <div class="pb-2 text-xl text-bold">{name}</div>
+            <div class="pb-2 text-sm text-bold">{role}</div>
+            <span class="pb-2 text-sm text-gray-500 text-bold">{`${from} - ${to}`}</span>
+            <div class="pb-2 text-sm text-gray-600 text-bold">
               {description}
             </div>
-            {(linkedin || twitter) && (
-              <div class="flex gap-3 pt-2">
+            {(linkedin || twitter || link) && (
+              <div class="flex gap-3 items-center pt-2">
+                {link && (
+                  <a
+                    href={link}
+                    target="_blank"
+                    rel="noreferrer"
+                    class="transition duration-300 ease-in-out hover:text-cyan-600 hover:-translate-y-1 hover:scale-110"
+                    aria-label="Website"
+                  >
+                    <Globe class="w-5 h-5" />
+                  </a>
+                )}
                 {linkedin && (
                   <a
                     href={linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    class="hover:text-cyan-600 transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300"
+                    class="transition duration-300 ease-in-out hover:text-cyan-600 hover:-translate-y-1 hover:scale-110"
                     aria-label="LinkedIn"
                   >
                     <LinkedIn width={20} height={20} />
@@ -66,7 +78,7 @@ export default component$(
                     href={twitter}
                     target="_blank"
                     rel="noreferrer"
-                    class="hover:text-cyan-600 transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300"
+                    class="transition duration-300 ease-in-out hover:text-cyan-600 hover:-translate-y-1 hover:scale-110"
                     aria-label="Twitter"
                   >
                     <Twitter width={20} height={20} />

@@ -1,6 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import ProfilePicture from "../../images/ProfilePicture.png";
 import Social from "../social/social";
+import { ThemeToggle } from "../theme-toggle/theme-toggle";
 
 export default component$(() => {
   return (
@@ -24,6 +25,7 @@ export default component$(() => {
                   type="LinkedIn"
                 />
                 <Social link={"https://x.com/iltumio"} type="Twitter" />
+                <ThemeToggle />
               </div>
             </div>
             <h2 class="text-xl">
@@ -31,6 +33,14 @@ export default component$(() => {
                 Web3 CTO & Blockchain Engineer
               </strong>
             </h2>
+            <nav class="mt-4 mb-4">
+              <a
+                href="/blog"
+                class="text-red-700 hover:text-red-800 font-semibold transition-colors inline-block"
+              >
+                Blog
+              </a>
+            </nav>
             <p class="mt-4 sm:leading-relaxed sm:text-l text-justify md:pl-0 md:pr-0 pl-4 pr-4">
               I am a passionate software engineer specializing in blockchain
               technology, with expertise in architecture design, smart contract

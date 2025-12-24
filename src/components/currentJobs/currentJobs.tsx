@@ -4,7 +4,7 @@ import JobPosition from "../jobPosition/jobPosition";
 export default component$(() => {
   return (
     <div class="flex flex-col items-center">
-      <h2 class="text-xl font-bold pb-4 pt-4">Current Job</h2>
+      <h2 class="pt-4 pb-4 text-xl font-bold">Positions</h2>
       <div class="w-full">
         <JobPosition
           name="Zyphe Inc."

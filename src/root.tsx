@@ -20,8 +20,20 @@ export default component$(() => {
       <head>
         <meta charset="utf-8" />
         <RouterHead />
+        <script
+          dangerouslySetInnerHTML={`
+            (function() {
+              const storedTheme = localStorage.getItem("theme");
+              if (storedTheme === "dark") {
+                document.documentElement.classList.add("dark");
+              } else {
+                document.documentElement.classList.remove("dark");
+              }
+            })();
+          `}
+        />
       </head>
-      <body lang="en">
+      <body lang="en" class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
         <RouterOutlet />
         <ServiceWorkerRegister />
       </body>
