@@ -55,7 +55,6 @@
   },
   "dependencies": {
     "@qwikest/icons": "^0.0.13",
-    "gray-matter": "^4.0.3",
     "marked": "^17.0.1"
   },
   "packageManager": "bun@latest"

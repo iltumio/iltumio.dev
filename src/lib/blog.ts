@@ -1,5 +1,4 @@
 import { marked } from "marked";
-import matter from "gray-matter";
 
 export interface BlogPost {
   slug: string;
@@ -18,8 +17,45 @@ const blogModules = import.meta.glob("/src/content/blog/*.md", {
   eager: true,
 }) as Record<string, string>;
 
+// Simple frontmatter parser (Edge-compatible, no Node.js dependencies)
+function parseFrontmatter(rawContent: string): {
+  data: Record<string, string>;
+  content: string;
+} {
+  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+  const match = rawContent.match(frontmatterRegex);
+
+  if (!match) {
+    return { data: {}, content: rawContent };
+  }
+
+  const frontmatterBlock = match[1];
+  const content = match[2];
+
+  const data: Record<string, string> = {};
+  const lines = frontmatterBlock.split("\n");
+
+  for (const line of lines) {
+    const colonIndex = line.indexOf(":");
+    if (colonIndex > 0) {
+      const key = line.slice(0, colonIndex).trim();
+      let value = line.slice(colonIndex + 1).trim();
+      // Remove surrounding quotes if present
+      if (
+        (value.startsWith('"') && value.endsWith('"')) ||
+        (value.startsWith("'") && value.endsWith("'"))
+      ) {
+        value = value.slice(1, -1);
+      }
+      data[key] = value;
+    }
+  }
+
+  return { data, content };
+}
+
 function parsePost(slug: string, rawContent: string): BlogPost {
-  const { data, content } = matter(rawContent);
+  const { data, content } = parseFrontmatter(rawContent);
   const htmlContent = marked.parse(content) as string;
 
   return {
