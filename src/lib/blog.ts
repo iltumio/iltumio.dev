@@ -1,7 +1,5 @@
 import { marked } from "marked";
 import matter from "gray-matter";
-import { readFile, readdir } from "fs/promises";
-import { join } from "path";
 
 export interface BlogPost {
   slug: string;
@@ -12,30 +10,17 @@ export interface BlogPost {
   htmlContent: string;
 }
 
-const blogDir = join(process.cwd(), "src/content/blog");
+// Use Vite's import.meta.glob to load markdown files at build time
+// This works in Edge Functions since it's resolved during the build
+const blogModules = import.meta.glob("/src/content/blog/*.md", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
 
-export async function getAllPosts(): Promise<BlogPost[]> {
-  const files = await readdir(blogDir);
-  const posts = await Promise.all(
-    files
-      .filter((file) => file.endsWith(".md"))
-      .map(async (file) => {
-        const slug = file.replace(/\.md$/, "");
-        return await getPostBySlug(slug);
-      }),
-  );
-
-  return posts.sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
-}
-
-export async function getPostBySlug(slug: string): Promise<BlogPost> {
-  const filePath = join(blogDir, `${slug}.md`);
-  const fileContents = await readFile(filePath, "utf8");
-  const { data, content } = matter(fileContents);
-
-  const htmlContent = await marked.parse(content);
+function parsePost(slug: string, rawContent: string): BlogPost {
+  const { data, content } = matter(rawContent);
+  const htmlContent = marked.parse(content) as string;
 
   return {
     slug,
@@ -47,9 +32,32 @@ export async function getPostBySlug(slug: string): Promise<BlogPost> {
   };
 }
 
+export async function getAllPosts(): Promise<BlogPost[]> {
+  const posts: BlogPost[] = [];
+
+  for (const [path, rawContent] of Object.entries(blogModules)) {
+    const slug = path.replace("/src/content/blog/", "").replace(".md", "");
+    posts.push(parsePost(slug, rawContent));
+  }
+
+  return posts.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+}
+
+export async function getPostBySlug(slug: string): Promise<BlogPost> {
+  const path = `/src/content/blog/${slug}.md`;
+  const rawContent = blogModules[path];
+
+  if (!rawContent) {
+    throw new Error(`Post not found: ${slug}`);
+  }
+
+  return parsePost(slug, rawContent);
+}
+
 export async function getAllSlugs(): Promise<string[]> {
-  const files = await readdir(blogDir);
-  return files
-    .filter((file) => file.endsWith(".md"))
-    .map((file) => file.replace(/\.md$/, ""));
+  return Object.keys(blogModules).map((path) =>
+    path.replace("/src/content/blog/", "").replace(".md", ""),
+  );
 }
