@@ -4,7 +4,7 @@
 
 @theme {
   --font-sans: "Inter", "system-ui", "sans-serif";
-  
+
   --animate-fade-in-up: fadeInUp 0.5s ease-out forwards;
 
   @keyframes fadeInUp {
@@ -20,16 +20,8 @@
 }
 
 @layer base {
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 100 900;
-    font-display: swap;
-    src: url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
-  }
-
   html {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: "Inter", system-ui, sans-serif;
     scroll-behavior: smooth;
   }
 }
@@ -45,7 +37,9 @@
 
   .btn-main-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    box-shadow:
+      0 10px 25px -5px rgba(0, 0, 0, 0.1),
+      0 8px 10px -6px rgba(0, 0, 0, 0.1);
   }
 
   .btn-main-link::before {
@@ -56,7 +50,13 @@
     width: 250%;
     height: 250%;
     transform: translate(-50%, -50%);
-    background-image: linear-gradient(45deg, #ff9f55, #f8dfd1 30%, #eba9ff 70%, #f1e4f5);
+    background-image: linear-gradient(
+      45deg,
+      #ff9f55,
+      #f8dfd1 30%,
+      #eba9ff 70%,
+      #f1e4f5
+    );
     filter: saturate(100%);
     z-index: 0;
     border-radius: 9999px;

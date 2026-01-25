@@ -1,0 +1,22 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  link: string;
+  type: "Github" | "Twitter" | "LinkedIn";
+}
+
+const { link, type } = Astro.props;
+---
+
+<a
+  href={link}
+  target="_blank"
+  rel="noreferrer"
+  aria-label={`${type} profile`}
+  class="text-gray-400 hover:text-gray-900 dark:text-gray-500 dark:hover:text-white transition-all duration-300 transform hover:scale-110"
+>
+  {type === "Github" && <Icon name="simple-icons:github" class="w-6 h-6" />}
+  {type === "Twitter" && <Icon name="simple-icons:x" class="w-6 h-6" />}
+  {type === "LinkedIn" && <Icon name="simple-icons:linkedin" class="w-6 h-6" />}
+</a>
