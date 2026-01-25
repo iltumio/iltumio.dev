@@ -1,0 +1,59 @@
+---
+import { Icon } from 'astro-icon/components';
+import Skill from '../skill/Skill.astro';
+import Solana from '../icons/Solana.astro';
+---
+
+<div class="flex flex-col w-full">
+  <div class="flex items-center gap-6 mb-10">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white shrink-0">Skills & Technologies</h2>
+    <div class="h-px flex-1 bg-gray-200 dark:bg-gray-800"></div>
+  </div>
+  
+  <div class="space-y-10">
+    <!-- Blockchains -->
+    <div class="space-y-4">
+      <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 text-center">Blockchains</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <Skill name="Ethereum">
+          <Icon name="fa6-brands:ethereum" slot="icon" />
+        </Skill>
+        <Skill name="Solana">
+          <Solana slot="icon" />
+        </Skill>
+        <Skill name="Stellar" class="col-span-2 sm:col-span-1">
+          <Icon name="simple-icons:stellar" slot="icon" />
+        </Skill>
+      </div>
+    </div>
+
+    <!-- Languages -->
+    <div class="space-y-4">
+      <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 text-center">Languages</h3>
+      <div class="grid grid-cols-2 gap-3 max-w-md mx-auto">
+        <Skill name="Rust">
+          <Icon name="fa6-brands:rust" slot="icon" />
+        </Skill>
+        <Skill name="Typescript">
+          <Icon name="simple-icons:typescript" slot="icon" />
+        </Skill>
+      </div>
+    </div>
+
+    <!-- Frameworks -->
+    <div class="space-y-4">
+      <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 text-center">Frameworks</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <Skill name="React">
+          <Icon name="fa6-brands:react" slot="icon" />
+        </Skill>
+        <Skill name="React Native">
+          <Icon name="fa6-brands:react" slot="icon" />
+        </Skill>
+        <Skill name="Svelte" class="col-span-2 sm:col-span-1">
+          <Icon name="simple-icons:svelte" slot="icon" />
+        </Skill>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+---
+import '../global.css';
+import '@fontsource/inter';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/inter/800.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Redefining digital identity with seamless, innovative solutions for everyone at Zyphe Inc" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		
+		<script is:inline>
+			(function() {
+				const storedTheme = localStorage.getItem("theme");
+				if (storedTheme === "dark") {
+					document.documentElement.classList.add("dark");
+				} else {
+					document.documentElement.classList.remove("dark");
+				}
+			})();
+		</script>
+	</head>
+	<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-white transition-colors duration-300 font-sans antialiased selection:bg-purple-200 selection:text-purple-900">
+		<slot />
+	</body>
+</html>

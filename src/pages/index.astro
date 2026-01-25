@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/header/Header.astro';
+import CurrentJobs from '../components/currentJobs/CurrentJobs.astro';
+import Skills from '../components/skills/Skills.astro';
+import Cta from '../components/cta/Cta.astro';
+---
+
+<Layout title="Manuel Tumiati | Web3 CTO & Blockchain Engineer">
+	<main class="min-h-screen flex flex-col items-center bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
+		<div class="w-full max-w-4xl px-5 sm:px-6 lg:px-8 py-10 lg:py-14 space-y-12 lg:space-y-16">
+			<Header />
+			
+			<div class="space-y-12 lg:space-y-16">
+				<section class="animate-fade-in-up" style="animation-delay: 0.1s">
+					<Cta />
+				</section>
+
+				<section class="animate-fade-in-up" style="animation-delay: 0.2s">
+					<CurrentJobs />
+				</section>
+				
+				<section class="animate-fade-in-up" style="animation-delay: 0.3s">
+					<Skills />
+				</section>
+			</div>
+		</div>
+	</main>
+	<footer class="py-6 border-t border-gray-100 dark:border-gray-800">
+		<p class="text-center text-sm text-gray-400 dark:text-gray-500">
+			&copy; {new Date().getFullYear()} Manuel Tumiati. All rights reserved.
+		</p>
+	</footer>
+</Layout>

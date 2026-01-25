@@ -1,0 +1,20 @@
+---
+interface Props {
+  name: string;
+  class?: string;
+}
+
+const { name, class: className, ...props } = Astro.props;
+---
+
+<div class:list={["group flex flex-col items-center justify-center gap-3 p-5 rounded-xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 hover:border-purple-200 dark:hover:border-purple-800 transition-all duration-200 hover:shadow-md hover:shadow-purple-500/5 cursor-default relative overflow-hidden", className]} {...props}>
+  <!-- Gradient background effect on hover -->
+  <div class="absolute inset-0 bg-linear-to-br from-purple-50 to-pink-50 dark:from-purple-900/10 dark:to-pink-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+  
+  <div class="text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-200 text-3xl shrink-0 relative z-10 [&>svg]:w-8 [&>svg]:h-8">
+    <slot name="icon" />
+  </div>
+  <div class="font-medium text-sm text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white relative z-10 text-center">
+    {name}
+  </div>
+</div>
