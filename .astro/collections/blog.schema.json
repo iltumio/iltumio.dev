@@ -39,6 +39,7 @@
       },
       "required": [
         "title",
+        "description",
         "date"
       ],
       "additionalProperties": false
