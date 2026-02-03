@@ -6,7 +6,28 @@ import Skills from '../components/skills/Skills.astro';
 import Cta from '../components/cta/Cta.astro';
 ---
 
-<Layout title="Manuel Tumiati | Web3 CTO & Blockchain Engineer">
+<Layout title="Manuel Tumiati | Web3 CTO & Blockchain Engineer" description="Manuel Tumiati — Web3 CTO & Blockchain Engineer building decentralized identity solutions at Zyphe Inc.">
+	<script type="application/ld+json" set:html={JSON.stringify({
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "Person",
+				"name": "Manuel Tumiati",
+				"jobTitle": "Web3 CTO & Blockchain Engineer",
+				"url": "https://iltumio.dev",
+				"sameAs": [
+					"https://github.com/iltumio",
+					"https://www.linkedin.com/in/manuel-tumiati/",
+					"https://x.com/iltumio"
+				]
+			},
+			{
+				"@type": "WebSite",
+				"name": "Manuel Tumiati",
+				"url": "https://iltumio.dev"
+			}
+		]
+	})} />
 	<main class="min-h-screen flex flex-col items-center bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
 		<div class="w-full max-w-4xl px-5 sm:px-6 lg:px-8 py-10 lg:py-14 space-y-12 lg:space-y-16">
 			<Header />
