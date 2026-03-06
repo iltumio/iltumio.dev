@@ -3,7 +3,10 @@ import { getCollection } from "astro:content";
 import type { APIContext } from "astro";
 
 export async function GET(context: APIContext) {
-  const posts = await getCollection("blog");
+  const now = new Date();
+  const posts = await getCollection("blog", (post) => {
+    return !post.data.draft && post.data.date <= now;
+  });
   return rss({
     title: "Manuel Tumiati's Blog",
     description:

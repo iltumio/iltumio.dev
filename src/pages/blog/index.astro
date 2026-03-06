@@ -3,7 +3,10 @@ import Layout from '../../layouts/Layout.astro';
 import CompactHeader from '../../components/compact-header/CompactHeader.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog')).sort(
+const now = new Date();
+const posts = (await getCollection('blog', (post) => {
+	return !post.data.draft && post.data.date <= now;
+})).sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
