@@ -10,12 +10,17 @@ netlify
 node_modules
 
 # Cache
+.astro
 .cache
 .mf
 .vscode
 .rollup.cache
+.wrangler
 tsconfig.tsbuildinfo
 cache/
+
+# Temp files
+output_temp.png
 
 # Logs
 logs
