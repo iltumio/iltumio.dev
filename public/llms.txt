@@ -1,0 +1,21 @@
+# iltumio.dev
+
+> Manuel Tumiati — Web3 CTO & Blockchain Engineer
+
+## About
+Personal website and blog of Manuel Tumiati, CTO at Zyphe Inc.
+Specializing in blockchain architecture, smart contract development,
+self-sovereign identity (SSI), and zero-knowledge proofs.
+
+## Content
+- Homepage: Professional profile, current roles, skills & technologies
+- Blog: Technical articles on Web3, blockchain, digital identity, and SSI
+
+## Blog Posts
+- /blog/eudi-wallet-ssi-comparison — Analysis comparing the EU Digital Identity Wallet against self-sovereign identity principles
+- /blog/welcome-to-my-blog — Introduction and blog overview
+
+## Contact
+- GitHub: https://github.com/iltumio
+- LinkedIn: https://www.linkedin.com/in/manuel-tumiati/
+- Twitter: https://x.com/iltumio
