@@ -10,12 +10,35 @@ interface Props {
 	title: string;
 	description?: string;
 	image?: string;
+	noindex?: boolean;
+	ogType?: string;
+	breadcrumbs?: { name: string; url: string }[];
 }
 
-const { title, description = "Redefining digital identity with seamless, innovative solutions for everyone at Zyphe Inc", image } = Astro.props;
+const {
+	title,
+	description = "Manuel Tumiati — Web3 CTO & Blockchain Engineer at Zyphe Inc. Specializing in decentralized identity, self-sovereign identity, and zero-knowledge proofs.",
+	image,
+	noindex = false,
+	ogType = "website",
+	breadcrumbs,
+} = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImage = image ? new URL(image, Astro.site).href : undefined;
+const ogImage = image
+	? new URL(image, Astro.site).href
+	: new URL('/og-default.png', Astro.site).href;
+
+const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	"itemListElement": breadcrumbs.map((bc, i) => ({
+		"@type": "ListItem",
+		"position": i + 1,
+		"name": bc.name,
+		"item": new URL(bc.url, Astro.site).href,
+	}))
+} : null;
 ---
 
 <!doctype html>
@@ -26,22 +49,27 @@ const ogImage = image ? new URL(image, Astro.site).href : undefined;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="canonical" href={canonicalURL} />
 		<meta name="generator" content={Astro.generator} />
+		{noindex && <meta name="robots" content="noindex, follow" />}
 		<title>{title}</title>
 		<meta name="description" content={description} />
 
 		<!-- Open Graph -->
-		<meta property="og:type" content="website" />
+		<meta property="og:type" content={ogType} />
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:site_name" content="Manuel Tumiati" />
-		{ogImage && <meta property="og:image" content={ogImage} />}
+		<meta property="og:image" content={ogImage} />
 
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		{ogImage && <meta name="twitter:image" content={ogImage} />}
+		<meta name="twitter:image" content={ogImage} />
+
+		{breadcrumbSchema && (
+			<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+		)}
 
 		<script is:inline>
 			(function() {
