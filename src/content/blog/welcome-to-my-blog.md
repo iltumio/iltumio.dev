@@ -2,6 +2,7 @@
 title: "Welcome to My Blog"
 date: "2024-01-15"
 description: "An introduction to my blog where I'll share insights about Web3, blockchain engineering, and digital identity."
+noindex: true
 ---
 
 Hello and welcome to my blog! I'm excited to share my thoughts and experiences as a Web3 CTO and Blockchain Engineer.

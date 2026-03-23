@@ -6,7 +6,10 @@ import Skills from '../components/skills/Skills.astro';
 import Cta from '../components/cta/Cta.astro';
 ---
 
-<Layout title="Manuel Tumiati | Web3 CTO & Blockchain Engineer" description="Manuel Tumiati — Web3 CTO & Blockchain Engineer building decentralized identity solutions at Zyphe Inc.">
+<Layout
+	title="Manuel Tumiati | Web3 CTO & Blockchain Engineer"
+	description="Manuel Tumiati — Web3 CTO & Blockchain Engineer at Zyphe Inc. Specializing in decentralized identity, self-sovereign identity, and zero-knowledge proofs."
+>
 	<script type="application/ld+json" set:html={JSON.stringify({
 		"@context": "https://schema.org",
 		"@graph": [
@@ -15,6 +18,12 @@ import Cta from '../components/cta/Cta.astro';
 				"name": "Manuel Tumiati",
 				"jobTitle": "Web3 CTO & Blockchain Engineer",
 				"url": "https://iltumio.dev",
+				"description": "Web3 CTO & Blockchain Engineer specializing in decentralized identity, self-sovereign identity, and zero-knowledge proofs.",
+				"worksFor": {
+					"@type": "Organization",
+					"name": "Zyphe Inc."
+				},
+				"knowsAbout": ["Blockchain", "Smart Contracts", "Self-Sovereign Identity", "Zero-Knowledge Proofs", "Web3", "Digital Identity", "Decentralized Systems"],
 				"sameAs": [
 					"https://github.com/iltumio",
 					"https://www.linkedin.com/in/manuel-tumiati/",
