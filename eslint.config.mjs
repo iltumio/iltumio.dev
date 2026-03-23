@@ -38,6 +38,7 @@ export default tseslint.config(
       "*.spec.tsx",
       "*.spec.ts",
       ".netlify",
+      ".astro",
       "pnpm-lock.yaml",
       "package-lock.json",
       "yarn.lock",
@@ -57,6 +58,15 @@ export default tseslint.config(
       },
     },
     plugins: { "@typescript-eslint": tseslint.plugin },
+  },
+  {
+    files: ["postcss.config.js"],
+    languageOptions: {
+      sourceType: "commonjs",
+      globals: {
+        module: "readonly",
+      },
+    },
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
