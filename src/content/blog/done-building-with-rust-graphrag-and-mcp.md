@@ -10,27 +10,43 @@ In the [first post](/blog/done-why-i-built-my-own-email-client), I explained why
 
 Done is a crate-heavy Rust workspace behind a SvelteKit UI. At a high level:
 
-```
-┌─────────────────────────────────────────────┐
-│         SvelteKit Frontend (Svelte 5)       │
-│  keyboard-first UI, inbox, graph, search    │
-├─────────────────────────────────────────────┤
-│              Tauri 2 Bridge                 │
-│        (IPC commands, event system)         │
-├─────────────────────────────────────────────┤
-│              Rust Backend                   │
-│  ┌──────────┬───────────┬────────────────┐  │
-│  │  Gmail   │ SurrealDB │  Pipeline      │  │
-│  │  Sync    │ (local    │  triage →      │  │
-│  │  Engine  │  RocksDB) │  graph + emb.  │  │
-│  └──────────┴───────────┴────────────────┘  │
-│  ┌──────────────────────────────────────┐   │
-│  │  Job queue (apalis) · multi-account  │   │
-│  └──────────────────────────────────────┘   │
-├─────────────────────────────────────────────┤
-│              MCP Server (local HTTP)        │
-│     thread tools for authenticated agents   │
-└─────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+  subgraph frontend ["SvelteKit Frontend · Svelte 5"]
+    UI["Keyboard-first UI<br/>inbox · graph · search"]
+  end
+
+  subgraph tauri ["Tauri 2 Bridge"]
+    IPC["IPC commands & events"]
+  end
+
+  subgraph rust ["Rust Backend"]
+    Gmail["Gmail Sync"]
+    DB[("SurrealDB")]
+    Pipe["Triage → Graph + embeddings"]
+    Jobs["apalis job queue"]
+  end
+
+  subgraph mcp ["MCP Server · localhost"]
+    Tools["Authenticated agent tools"]
+  end
+
+  UI --> IPC
+  IPC --> Gmail
+  IPC --> DB
+  IPC --> Pipe
+  IPC --> Jobs
+  IPC --> Tools
+
+  Gmail --- DB
+  DB --- Pipe
+  Pipe --- Jobs
+
+  class UI ui
+  class IPC bridge
+  class Gmail,Pipe,Jobs core
+  class DB store
+  class Tools agent
 ```
 
 The Rust backend does the heavy lifting: syncing Gmail accounts, storing mail and graph data locally in SurrealDB, running triage and the extraction pipeline, and exposing operations through both Tauri commands and a local MCP server. The SvelteKit frontend talks to Rust through Tauri's IPC bridge.
@@ -96,13 +112,21 @@ The second query needs relationships between entities across multiple emails. Ve
 
 GraphRAG builds a knowledge graph during indexing:
 
-```
-[Manuel] --sent_to--> [Marco]
-[Marco] --works_at--> [Acme Corp]
-[Email #1241] --mentions--> [Project Alpha]
-[Project Alpha] --has_deadline--> [2026-04-15]
-[Email #1307] --contains_commitment--> [Deliver prototype]
-[Deliver prototype] --related_to--> [Project Alpha]
+```mermaid
+flowchart LR
+  Manuel -- sent_to --> Marco
+  Marco -- works_at --> Acme["Acme Corp"]
+  E1241["Email #1241"] -- mentions --> Alpha["Project Alpha"]
+  Alpha -- has_deadline --> D1["2026-04-15"]
+  E1307["Email #1307"] -- contains_commitment --> Deliver["Deliver prototype"]
+  Deliver -- related_to --> Alpha
+
+  class Manuel,Marco person
+  class Acme org
+  class E1241,E1307 email
+  class Alpha project
+  class D1 date
+  class Deliver commit
 ```
 
 When you query "what did I promise Acme?", the system traverses the graph from Acme Corp through related projects, commitments, and deadlines. The answer is assembled from multiple emails without any single email containing the full picture. Done also supports multiple query modes (local, global, hybrid, mix, naive) so retrieval can lean on graph structure, vectors, or both.

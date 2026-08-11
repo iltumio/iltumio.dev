@@ -13,6 +13,13 @@ export default defineConfig({
     imageService: "compile",
   }),
   integrations: [icon(), sitemap()],
+  markdown: {
+    // Leave mermaid blocks unhighlighted so the client renderer can parse them
+    syntaxHighlight: {
+      type: "shiki",
+      excludeLangs: ["mermaid"],
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },

@@ -1,0 +1,396 @@
+---
+/**
+ * Client-side Mermaid renderer for blog markdown.
+ * Converts ```mermaid code blocks into SVG diagrams with site-themed colors.
+ * Re-renders when the site theme (light/dark) changes.
+ */
+---
+
+<style is:global>
+  .mermaid-diagram {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    margin: 2rem 0;
+    padding: 1.5rem 1.25rem;
+    border-radius: 1rem;
+    border: 1px solid rgb(243 232 255); /* purple-100 */
+    background:
+      radial-gradient(120% 80% at 0% 0%, rgb(250 245 255 / 0.9), transparent 55%),
+      radial-gradient(100% 70% at 100% 100%, rgb(243 232 255 / 0.55), transparent 50%),
+      rgb(255 255 255);
+    box-shadow:
+      0 1px 2px rgb(15 23 42 / 0.04),
+      0 8px 24px -12px rgb(147 51 234 / 0.12);
+  }
+
+  .dark .mermaid-diagram {
+    border-color: rgb(88 28 135 / 0.45); /* purple-900 */
+    background:
+      radial-gradient(120% 80% at 0% 0%, rgb(88 28 135 / 0.25), transparent 55%),
+      radial-gradient(100% 70% at 100% 100%, rgb(59 7 100 / 0.35), transparent 50%),
+      rgb(17 24 39); /* gray-900 */
+    box-shadow:
+      0 1px 2px rgb(0 0 0 / 0.3),
+      0 12px 32px -16px rgb(168 85 247 / 0.25);
+  }
+
+  .mermaid-diagram svg {
+    max-width: 100%;
+    height: auto;
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Nodes */
+  .mermaid-diagram .node rect,
+  .mermaid-diagram .node circle,
+  .mermaid-diagram .node ellipse,
+  .mermaid-diagram .node polygon,
+  .mermaid-diagram .node path {
+    stroke-width: 1.5px !important;
+    filter: drop-shadow(0 1px 1px rgb(15 23 42 / 0.04));
+  }
+
+  .mermaid-diagram .node rect {
+    rx: 10px;
+    ry: 10px;
+  }
+
+  .mermaid-diagram .nodeLabel,
+  .mermaid-diagram .edgeLabel,
+  .mermaid-diagram .label,
+  .mermaid-diagram .cluster-label,
+  .mermaid-diagram foreignObject {
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif !important;
+    font-size: 0.875rem !important;
+    letter-spacing: -0.01em;
+  }
+
+  .mermaid-diagram .nodeLabel,
+  .mermaid-diagram .label {
+    font-weight: 500;
+  }
+
+  .mermaid-diagram .cluster-label,
+  .mermaid-diagram .cluster-label span,
+  .mermaid-diagram .cluster-label foreignObject div {
+    font-weight: 600 !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.01em;
+  }
+
+  /* Clusters / subgraphs */
+  .mermaid-diagram .cluster rect {
+    rx: 14px !important;
+    ry: 14px !important;
+    stroke-width: 1.5px !important;
+    stroke-dasharray: none !important;
+  }
+
+  /* Edges */
+  .mermaid-diagram .edgePath path.path {
+    stroke-width: 1.75px !important;
+  }
+
+  .mermaid-diagram .edgeLabel rect {
+    opacity: 0.95;
+    rx: 4px;
+    ry: 4px;
+  }
+
+  .mermaid-diagram .marker,
+  .mermaid-diagram marker path {
+    stroke-width: 0 !important;
+  }
+
+  /* Database cylinder nodes look better with a softer filter */
+  .mermaid-diagram .node .label-container {
+    filter: none;
+  }
+
+  pre.mermaid-source {
+    display: none;
+  }
+</style>
+
+<script>
+  type DiagramSource = {
+    source: string;
+    placeholder: HTMLElement;
+  };
+
+  type MermaidApi = typeof import("mermaid").default;
+
+  let mermaid: MermaidApi | null = null;
+  let diagrams: DiagramSource[] = [];
+  let renderGeneration = 0;
+  let themeObserver: MutationObserver | null = null;
+
+  function isDark(): boolean {
+    return document.documentElement.classList.contains("dark");
+  }
+
+  /** Site-aligned Mermaid theme (purple accent + Inter). */
+  function themeConfig(dark: boolean) {
+    if (dark) {
+      return {
+        theme: "base" as const,
+        themeVariables: {
+          darkMode: true,
+          background: "transparent",
+          fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
+          fontSize: "14px",
+
+          // Primary nodes
+          primaryColor: "#4c1d95", // purple-900
+          primaryTextColor: "#f5f3ff", // violet-50
+          primaryBorderColor: "#c084fc", // purple-400
+          secondaryColor: "#3b0764", // purple-950
+          secondaryTextColor: "#ede9fe",
+          secondaryBorderColor: "#a855f7",
+          tertiaryColor: "#2e1065",
+          tertiaryTextColor: "#e9d5ff",
+          tertiaryBorderColor: "#9333ea",
+
+          // Text & lines
+          textColor: "#e5e7eb",
+          lineColor: "#c084fc",
+          mainBkg: "#4c1d95",
+          nodeBorder: "#c084fc",
+          nodeTextColor: "#f5f3ff",
+
+          // Subgraphs
+          clusterBkg: "#1a1028",
+          clusterBorder: "#7e22ce",
+          titleColor: "#e9d5ff",
+
+          // Edges & labels
+          edgeLabelBackground: "#111827",
+          actorBorder: "#c084fc",
+          actorBkg: "#4c1d95",
+          actorTextColor: "#f5f3ff",
+          actorLineColor: "#a855f7",
+
+          // Misc
+          noteBkgColor: "#2e1065",
+          noteTextColor: "#f5f3ff",
+          noteBorderColor: "#a855f7",
+        },
+      };
+    }
+
+    return {
+      theme: "base" as const,
+      themeVariables: {
+        darkMode: false,
+        background: "transparent",
+        fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
+        fontSize: "14px",
+
+        // Primary nodes: soft purple fill, strong border
+        primaryColor: "#f3e8ff", // purple-100
+        primaryTextColor: "#3b0764", // purple-950
+        primaryBorderColor: "#9333ea", // purple-600
+        secondaryColor: "#ede9fe", // violet-100
+        secondaryTextColor: "#4c1d95",
+        secondaryBorderColor: "#a855f7",
+        tertiaryColor: "#faf5ff", // purple-50
+        tertiaryTextColor: "#581c87",
+        tertiaryBorderColor: "#c084fc",
+
+        // Text & lines
+        textColor: "#1f2937",
+        lineColor: "#7c3aed", // violet-600
+        mainBkg: "#f3e8ff",
+        nodeBorder: "#9333ea",
+        nodeTextColor: "#3b0764",
+
+        // Subgraphs
+        clusterBkg: "#faf5ff",
+        clusterBorder: "#d8b4fe", // purple-300
+        titleColor: "#6b21a8", // purple-800
+
+        // Edges & labels
+        edgeLabelBackground: "#ffffff",
+        actorBorder: "#9333ea",
+        actorBkg: "#f3e8ff",
+        actorTextColor: "#3b0764",
+        actorLineColor: "#7c3aed",
+
+        noteBkgColor: "#faf5ff",
+        noteTextColor: "#3b0764",
+        noteBorderColor: "#c084fc",
+      },
+    };
+  }
+
+  /** Semantic node styles for both light and dark themes. */
+  function classDefs(dark: boolean): string {
+    if (dark) {
+      return `
+classDef ui fill:#5b21b6,stroke:#d8b4fe,color:#faf5ff
+classDef bridge fill:#6b21a8,stroke:#c084fc,color:#f5f3ff
+classDef core fill:#4c1d95,stroke:#a855f7,color:#ede9fe
+classDef store fill:#312e81,stroke:#818cf8,color:#e0e7ff
+classDef agent fill:#9d174d,stroke:#f9a8d4,color:#fdf2f8
+classDef person fill:#5b21b6,stroke:#d8b4fe,color:#faf5ff
+classDef org fill:#3730a3,stroke:#a5b4fc,color:#eef2ff
+classDef email fill:#6b21a8,stroke:#c084fc,color:#f5f3ff
+classDef project fill:#9d174d,stroke:#f9a8d4,color:#fdf2f8
+classDef date fill:#065f46,stroke:#6ee7b7,color:#ecfdf5
+classDef commit fill:#9a3412,stroke:#fdba74,color:#fff7ed
+`.trim();
+    }
+
+    return `
+classDef ui fill:#ede9fe,stroke:#7c3aed,color:#3b0764
+classDef bridge fill:#f3e8ff,stroke:#9333ea,color:#4c1d95
+classDef core fill:#faf5ff,stroke:#a855f7,color:#581c87
+classDef store fill:#eef2ff,stroke:#6366f1,color:#312e81
+classDef agent fill:#fce7f3,stroke:#db2777,color:#831843
+classDef person fill:#ede9fe,stroke:#7c3aed,color:#3b0764
+classDef org fill:#e0e7ff,stroke:#4f46e5,color:#312e81
+classDef email fill:#f3e8ff,stroke:#9333ea,color:#581c87
+classDef project fill:#fce7f3,stroke:#db2777,color:#831843
+classDef date fill:#ecfdf5,stroke:#059669,color:#064e3b
+classDef commit fill:#fff7ed,stroke:#ea580c,color:#7c2d12
+`.trim();
+  }
+
+  /** Append theme-aware classDefs; drop any author-defined classDef lines. */
+  function prepareSource(source: string, dark: boolean): string {
+    const withoutDefs = source
+      .split("\n")
+      .filter((line) => !/^\s*classDef\b/.test(line))
+      .join("\n")
+      .trimEnd();
+    return `${withoutDefs}\n\n${classDefs(dark)}`;
+  }
+
+  async function loadMermaid(): Promise<MermaidApi> {
+    if (mermaid) return mermaid;
+    const mod = await import("mermaid");
+    mermaid = mod.default;
+    return mermaid;
+  }
+
+  function collectSources(): DiagramSource[] {
+    const found: DiagramSource[] = [];
+
+    const selectors = [
+      "pre > code.language-mermaid",
+      'pre[data-language="mermaid"] > code',
+      "code.language-mermaid",
+    ];
+
+    for (const selector of selectors) {
+      document.querySelectorAll(selector).forEach((code) => {
+        const pre = code.closest("pre");
+        if (!pre || pre.dataset.mermaidCollected === "true") return;
+
+        const source = (code.textContent ?? "").trim();
+        if (!source) return;
+
+        pre.dataset.mermaidCollected = "true";
+        pre.classList.add("mermaid-source");
+
+        const placeholder = document.createElement("div");
+        placeholder.className = "mermaid-diagram";
+        placeholder.setAttribute("role", "img");
+        placeholder.setAttribute("aria-label", "Diagram");
+        pre.after(placeholder);
+
+        found.push({ source, placeholder });
+      });
+    }
+
+    return found;
+  }
+
+  async function renderAll() {
+    if (diagrams.length === 0) return;
+
+    const api = await loadMermaid();
+    const generation = ++renderGeneration;
+    const dark = isDark();
+    const { theme, themeVariables } = themeConfig(dark);
+
+    api.initialize({
+      startOnLoad: false,
+      theme,
+      themeVariables,
+      securityLevel: "strict",
+      fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
+      flowchart: {
+        curve: "basis",
+        padding: 18,
+        nodeSpacing: 36,
+        rankSpacing: 48,
+        htmlLabels: true,
+        useMaxWidth: true,
+        diagramPadding: 12,
+      },
+      themeCSS: dark
+        ? `
+          .node rect, .node circle, .node ellipse, .node polygon { filter: drop-shadow(0 1px 2px rgba(0,0,0,.25)); }
+          .cluster rect { fill-opacity: 0.55; }
+          .edgePath .path { stroke-linecap: round; }
+        `
+        : `
+          .node rect, .node circle, .node ellipse, .node polygon { filter: drop-shadow(0 1px 1px rgba(15,23,42,.06)); }
+          .cluster rect { fill-opacity: 0.75; }
+          .edgePath .path { stroke-linecap: round; }
+        `,
+    });
+
+    await Promise.all(
+      diagrams.map(async ({ source, placeholder }, index) => {
+        if (generation !== renderGeneration) return;
+
+        const id = `mermaid-${index}-${generation}`;
+        try {
+          const { svg } = await api.render(id, prepareSource(source, dark));
+          if (generation !== renderGeneration) return;
+          placeholder.innerHTML = svg;
+        } catch (error) {
+          console.error("Mermaid render failed:", error);
+          placeholder.innerHTML =
+            '<p class="text-sm text-red-600 dark:text-red-400">Failed to render diagram.</p>';
+        }
+      }),
+    );
+  }
+
+  function ensureThemeObserver() {
+    if (themeObserver) return;
+    themeObserver = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.attributeName === "class") {
+          void renderAll();
+          break;
+        }
+      }
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+  }
+
+  async function setup() {
+    diagrams = collectSources();
+    if (diagrams.length === 0) return;
+    ensureThemeObserver();
+    await renderAll();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => void setup());
+  } else {
+    void setup();
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    void setup();
+  });
+</script>
