@@ -12,6 +12,10 @@ self-sovereign identity (SSI), and zero-knowledge proofs.
 - Blog: Technical articles on Web3, blockchain, digital identity, and SSI
 
 ## Blog Posts
+- /blog/switching-from-sccache-to-kache — First-person notes on replacing sccache with kache for local Rust build caching and worktree disk use
+- /blog/done-lessons-learned — Lessons from building an email client: HTML, entity resolution, sync, and performance
+- /blog/done-building-with-rust-graphrag-and-mcp — Technical deep dive into Done: Tauri, SvelteKit, SurrealDB, GraphRAG, and MCP
+- /blog/done-why-i-built-my-own-email-client — Why Done exists: email clients optimize for speed, not understanding
 - /blog/eudi-wallet-ssi-comparison — Analysis comparing the EU Digital Identity Wallet against self-sovereign identity principles
 - /blog/welcome-to-my-blog — Introduction and blog overview
 
