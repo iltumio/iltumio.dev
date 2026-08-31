@@ -26,6 +26,15 @@
   }
 }
 
+/* Inline-code utilities also match code nested in a pre. Keep fenced code
+   transparent so the high-contrast block palette remains unobstructed. */
+.blog-prose pre code {
+  background-color: transparent;
+  color: #f3f4f6;
+  padding: 0;
+  border-radius: 0;
+}
+
 @layer components {
   .btn-main-link {
     position: relative;
