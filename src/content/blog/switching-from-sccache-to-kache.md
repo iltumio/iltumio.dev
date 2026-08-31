@@ -8,7 +8,7 @@ I have been running [sccache](https://github.com/mozilla/sccache) as `RUSTC_WRAP
 
 Then the problem stopped being compile time. It became disk.
 
-I keep several checkouts of the same repos around. [Done](/blog/done-building-with-rust-graphrag-and-mcp) is a crate-heavy Tauri workspace. Zyphe work lives in its own trees. Agent sessions and review branches get worktrees. Each one grows a `target/` directory that looks unique to `du` and feels identical to anyone who has compiled the same crates this week.
+I keep several checkouts of the same repos around. [Done](/blog/done-building-with-rust-graphrag-and-mcp) is a crate-heavy Tauri workspace. Day-job repos live in their own trees. Agent sessions and review branches get worktrees. Each one grows a `target/` directory that looks unique to `du` and feels identical to anyone who has compiled the same crates this week.
 
 sccache was skipping the compiles. It was not stopping me from storing the same `.rlib` four times.
 
@@ -79,9 +79,9 @@ This is the part that changed my day-to-day, not the TUI and not S3.
 ~/.cache/kache/store/blobs/
   └── ab/cd1234...          ← one physical copy
 
-done/
+workspace/
   ├── main/target/debug/deps/libfoo.rlib      → same inode
-  ├── graph-extract/target/debug/deps/libfoo.rlib
+  ├── feat-search/target/debug/deps/libfoo.rlib
   └── review-pr/target/debug/deps/libfoo.rlib
 ```
 
