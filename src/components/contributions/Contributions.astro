@@ -1,0 +1,123 @@
+---
+const USER = "iltumio";
+const CELL = 11;
+const GAP = 3;
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+type Day = { date: string; count: number; level: number };
+
+let days: Day[] = [];
+let total = 0;
+
+try {
+  const res = await fetch(
+    `https://github-contributions-api.jogruber.de/v4/${USER}?y=last`,
+    {
+      headers: { Accept: "application/json", "User-Agent": "iltumio.dev" },
+      signal: AbortSignal.timeout(4000),
+    }
+  );
+  if (res.ok) {
+    const data = await res.json();
+    days = data.contributions ?? [];
+    total = data.total?.lastYear ?? 0;
+  }
+} catch {
+  days = [];
+}
+
+const weeks: Day[][] = [];
+for (let i = 0; i < days.length; i += 7) {
+  weeks.push(days.slice(i, i + 7));
+}
+
+const monthLabels: { index: number; label: string }[] = [];
+let lastMonth = -1;
+weeks.forEach((week, index) => {
+  const first = week[0];
+  if (!first) return;
+  const month = new Date(`${first.date}T00:00:00Z`).getUTCMonth();
+  if (month !== lastMonth) {
+    const prev = monthLabels.at(-1);
+    const room = weeks.length - index >= 3;
+    if (room && (!prev || index - prev.index >= 2)) {
+      monthLabels.push({ index, label: MONTHS[month] });
+    }
+    lastMonth = month;
+  }
+});
+
+const width = weeks.length * (CELL + GAP) - GAP;
+const labelH = 16;
+const height = labelH + 7 * (CELL + GAP) - GAP;
+const show = weeks.length > 0;
+---
+
+{show && (
+  <div class="flex w-full flex-col">
+    <div class="mb-6 flex items-end justify-between gap-4">
+      <div class="flex min-w-0 flex-1 items-center gap-6">
+        <h2 class="shrink-0 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          GitHub
+        </h2>
+        <div class="h-px flex-1 bg-gray-200 dark:bg-gray-800"></div>
+      </div>
+      <a
+        href={`https://github.com/${USER}`}
+        target="_blank"
+        rel="noreferrer"
+        class="shrink-0 text-sm font-medium text-purple-600 hover:underline dark:text-purple-400"
+      >
+        {total.toLocaleString("en-US")} contributions
+      </a>
+    </div>
+
+    <figure class="gc-graph w-full">
+      <svg
+        viewBox={`0 0 ${width} ${height}`}
+        width="100%"
+        height="auto"
+        role="img"
+        aria-label={`${total.toLocaleString("en-US")} GitHub contributions in the last year`}
+      >
+        {monthLabels.map(({ index, label }) => (
+          <text
+            x={index * (CELL + GAP)}
+            y="10"
+            class="gc-label"
+            fill="currentColor"
+          >
+            {label}
+          </text>
+        ))}
+        {weeks.map((week, wi) =>
+          week.map((day, di) => (
+            <rect
+              x={wi * (CELL + GAP)}
+              y={labelH + di * (CELL + GAP)}
+              width={CELL}
+              height={CELL}
+              rx="2"
+              fill={`var(--gc-${day.level})`}
+            >
+              <title>
+                {day.count} contribution{day.count === 1 ? "" : "s"} on {day.date}
+              </title>
+            </rect>
+          ))
+        )}
+      </svg>
+      <figcaption class="mt-3 flex items-center justify-end gap-1.5 text-xs text-gray-500 dark:text-gray-400">
+        <span>Less</span>
+        {[0, 1, 2, 3, 4].map((level) => (
+          <span
+            class="inline-block size-2.5 rounded-sm"
+            style={`background: var(--gc-${level})`}
+            aria-hidden="true"
+          />
+        ))}
+        <span>More</span>
+      </figcaption>
+    </figure>
+  </div>
+)}

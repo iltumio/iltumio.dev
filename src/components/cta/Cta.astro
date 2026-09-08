@@ -3,20 +3,16 @@ import { Icon } from 'astro-icon/components';
 ---
 
 <div class="flex flex-col items-center py-4">
-  <div class="flex justify-center items-center w-full max-w-xs">
-    <a
-      href="https://calendar.mstack.cloud/share/d5a4da88"
-      target="_blank"
-      rel="noreferrer"
-      class="btn-main-link group w-full"
-    >
-      <span class="relative bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-3.5 rounded-full flex items-center justify-center gap-2.5 font-semibold text-base hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors">
-        <Icon name="heroicons:calendar-days-20-solid" class="w-5 h-5" />
-        Book a meeting
-      </span>
-    </a>
-  </div>
-  <p class="mt-3 text-sm text-gray-500 dark:text-gray-400 text-center">
+  <a
+    href="https://calendar.mstack.cloud/share/d5a4da88"
+    target="_blank"
+    rel="noreferrer"
+    class="inline-flex w-full max-w-xs items-center justify-center gap-2.5 rounded-full bg-gray-900 px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-gray-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
+  >
+    <Icon name="heroicons:calendar-days-20-solid" class="h-5 w-5" />
+    Book a meeting
+  </a>
+  <p class="mt-3 text-center text-sm text-gray-500 dark:text-gray-400">
     Let's discuss your next project or just say hi!
   </p>
 </div>

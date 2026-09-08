@@ -1,0 +1,30 @@
+---
+import Social from "../social/Social.astro";
+---
+
+<footer class="border-t border-gray-200 dark:border-gray-800">
+  <div
+    class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-5 py-6 sm:flex-row sm:px-6 lg:px-8"
+  >
+    <p class="text-sm text-gray-500 dark:text-gray-400">
+      &copy; {new Date().getFullYear()} Manuel Tumiati. All rights reserved.
+    </p>
+    <div class="flex items-center">
+      <Social
+        class="inline-flex size-11 items-center justify-center"
+        link={"https://github.com/iltumio"}
+        type="Github"
+      />
+      <Social
+        class="inline-flex size-11 items-center justify-center"
+        link={"https://www.linkedin.com/in/manuel-tumiati/"}
+        type="LinkedIn"
+      />
+      <Social
+        class="inline-flex size-11 items-center justify-center"
+        link={"https://x.com/iltumio"}
+        type="Twitter"
+      />
+    </div>
+  </div>
+</footer>

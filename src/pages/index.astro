@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/header/Header.astro';
 import CurrentJobs from '../components/currentJobs/CurrentJobs.astro';
 import Skills from '../components/skills/Skills.astro';
+import Contributions from '../components/contributions/Contributions.astro';
 import Cta from '../components/cta/Cta.astro';
 ---
 
@@ -37,11 +38,11 @@ import Cta from '../components/cta/Cta.astro';
 			}
 		]
 	})} />
-	<main class="min-h-screen flex flex-col items-center bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
-		<div class="w-full max-w-4xl px-5 sm:px-6 lg:px-8 py-10 lg:py-14 space-y-12 lg:space-y-16">
+	<main id="main-content" class="flex flex-1 flex-col items-center bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
+		<div class="w-full max-w-5xl px-5 sm:px-6 lg:px-8 pt-8 pb-8 lg:pt-10 lg:pb-10 space-y-10 lg:space-y-12">
 			<Header />
 			
-			<div class="space-y-12 lg:space-y-16">
+			<div class="space-y-10 lg:space-y-12">
 				<section class="animate-fade-in-up" style="animation-delay: 0.1s">
 					<Cta />
 				</section>
@@ -49,16 +50,15 @@ import Cta from '../components/cta/Cta.astro';
 				<section class="animate-fade-in-up" style="animation-delay: 0.2s">
 					<CurrentJobs />
 				</section>
-				
+
 				<section class="animate-fade-in-up" style="animation-delay: 0.3s">
+					<Contributions />
+				</section>
+				
+				<section class="animate-fade-in-up" style="animation-delay: 0.4s">
 					<Skills />
 				</section>
 			</div>
 		</div>
 	</main>
-	<footer class="py-6 border-t border-gray-100 dark:border-gray-800">
-		<p class="text-center text-sm text-gray-400 dark:text-gray-500">
-			&copy; {new Date().getFullYear()} Manuel Tumiati. All rights reserved.
-		</p>
-	</footer>
 </Layout>

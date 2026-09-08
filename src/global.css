@@ -24,6 +24,16 @@
     font-family: "Inter", system-ui, sans-serif;
     scroll-behavior: smooth;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .animate-fade-in-up {
+      animation: none;
+    }
+  }
 }
 
 /* Inline-code utilities also match code nested in a pre. Keep fenced code
@@ -36,53 +46,143 @@
 }
 
 @layer components {
-  .btn-main-link {
-    position: relative;
-    padding: 2px;
-    border-radius: 9999px;
+  .skills-marquee {
     overflow: hidden;
-    transition: all 0.3s ease;
-  }
-
-  .btn-main-link:hover {
-    transform: translateY(-2px);
-    box-shadow:
-      0 10px 25px -5px rgba(0, 0, 0, 0.1),
-      0 8px 10px -6px rgba(0, 0, 0, 0.1);
-  }
-
-  .btn-main-link::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 250%;
-    height: 250%;
-    transform: translate(-50%, -50%);
-    background-image: linear-gradient(
-      45deg,
-      #ff9f55,
-      #f8dfd1 30%,
-      #eba9ff 70%,
-      #f1e4f5
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 5rem,
+      black calc(100% - 5rem),
+      transparent
     );
-    filter: saturate(100%);
-    z-index: 0;
-    border-radius: 9999px;
-    animation: rotate 4s linear infinite;
   }
 
-  .btn-main-link > * {
-    position: relative;
-    z-index: 1;
+  .skills-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: skills-marquee 32s linear infinite;
   }
 
-  @keyframes rotate {
+  .skills-marquee:hover .skills-marquee-track,
+  .skills-marquee:focus-within .skills-marquee-track {
+    animation-play-state: paused;
+  }
+
+  .skills-marquee-set {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0.5rem 0;
+    list-style: none;
+  }
+
+  @keyframes skills-marquee {
     from {
-      transform: translate(-50%, -50%) rotate(0deg);
+      transform: translateX(0);
     }
     to {
-      transform: translate(-50%, -50%) rotate(360deg);
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skills-marquee {
+      mask-image: none;
+    }
+
+    .skills-marquee-track {
+      animation: none;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .skills-marquee-set[aria-hidden="true"] {
+      display: none;
+    }
+
+    .profile-shine::before {
+      animation: none;
+      opacity: 0;
+    }
+  }
+
+  .profile-plate {
+    border: 1px solid rgb(15 23 42 / 0.06);
+    box-shadow:
+      0 1px 1px rgb(15 23 42 / 0.05),
+      0 10px 24px -6px rgb(15 23 42 / 0.16),
+      0 28px 48px -14px rgb(15 23 42 / 0.2);
+  }
+
+  .dark .profile-plate {
+    border-color: rgb(255 255 255 / 0.08);
+    box-shadow:
+      0 1px 1px rgb(0 0 0 / 0.45),
+      0 14px 32px -8px rgb(0 0 0 / 0.55),
+      0 36px 60px -16px rgb(0 0 0 / 0.65);
+  }
+
+  .gc-graph {
+    --gc-0: #e5e7eb;
+    --gc-1: #e9d5ff;
+    --gc-2: #c084fc;
+    --gc-3: #9333ea;
+    --gc-4: #6b21a8;
+    color: #6b7280;
+  }
+
+  .dark .gc-graph {
+    --gc-0: #1f2937;
+    --gc-1: #581c87;
+    --gc-2: #7e22ce;
+    --gc-3: #a855f7;
+    --gc-4: #e9d5ff;
+    color: #9ca3af;
+  }
+
+  .gc-label {
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 500;
+  }
+
+  .profile-shine {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .profile-shine::before {
+    content: "";
+    position: absolute;
+    top: -60%;
+    height: 220%;
+    width: 55%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgb(255 255 255 / 0) 32%,
+      rgb(255 255 255 / 0.22) 44%,
+      rgb(255 255 255 / 0.7) 50%,
+      rgb(255 255 255 / 0.22) 56%,
+      rgb(255 255 255 / 0) 68%,
+      transparent 100%
+    );
+    transform: translateX(-140%) rotate(25deg);
+    animation: profile-shine 4.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+
+  @keyframes profile-shine {
+    0%,
+    48% {
+      transform: translateX(-140%) rotate(25deg);
+    }
+    72%,
+    100% {
+      transform: translateX(260%) rotate(25deg);
     }
   }
 }

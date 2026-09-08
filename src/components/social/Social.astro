@@ -4,9 +4,10 @@ import { Icon } from 'astro-icon/components';
 interface Props {
   link: string;
   type: "Github" | "Twitter" | "LinkedIn";
+  class?: string;
 }
 
-const { link, type } = Astro.props;
+const { link, type, class: className } = Astro.props;
 ---
 
 <a
@@ -14,7 +15,10 @@ const { link, type } = Astro.props;
   target="_blank"
   rel="noreferrer"
   aria-label={`${type} profile`}
-  class="text-gray-400 hover:text-gray-900 dark:text-gray-500 dark:hover:text-white transition-all duration-300 transform hover:scale-110"
+  class:list={[
+    "text-gray-400 hover:text-gray-900 dark:text-gray-500 dark:hover:text-white transition-colors duration-300",
+    className,
+  ]}
 >
   {type === "Github" && <Icon name="simple-icons:github" class="w-6 h-6" />}
   {type === "Twitter" && <Icon name="simple-icons:x" class="w-6 h-6" />}
