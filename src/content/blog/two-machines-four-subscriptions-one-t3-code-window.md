@@ -32,6 +32,8 @@ main workstation (192.168.1.178)        agents, mini PC (192.168.1.143)
 
 So the rule isn't "heavy work goes to the other machine". It's the opposite of what you'd expect from a spare box: **the machine with the weaker hardware runs the work that isn't hardware-bound, and it runs it in the background, where latency doesn't matter.** The fast machine keeps the loop I'm actually sitting in front of.
 
+That doesn't mean I sit there watching the agent work. Even on my workstation, I start a thread and come back to it only when it needs me: a question to answer, a plan to approve, a diff to review. The rest of the time goes to everything else my job is made of. The difference between the two machines is how much they wait for each other. When an agent on the workstation does call me back, the build and test cycle I jump into answers in seconds, because the Rust core is where that cycle has to be fast.
+
 ## Environments: where a thread actually runs
 
 The key word in T3 Code is **environment**. An environment is a T3 server with its own identity (a UUID in `~/.t3/userdata/environment-id`), its own settings, its own provider list, its own state database and its own worktrees. The desktop app is just a client, and it can connect to several environments at once. T3 Code doesn't treat "remote" as a special case of "local": a server on the same machine and a server at the other end of an SSH connection look exactly the same in the UI.
@@ -53,7 +55,7 @@ $ cat ~/.t3/userdata/server-runtime.json
 
 `serviceManaged: true` means the server's lifetime is decoupled from the connection. The SSH tunnel is only how I *watch* the work; it isn't what keeps the work alive. I can quit T3 Code, reboot my workstation, or walk away for the evening: the tunnel drops, and the agents on the mini PC carry on. When the client reconnects, the sidebar catches up and the threads are where I left them, usually with more work done.
 
-That's what changes day to day. I start two or three threads on the mini PC in the morning, answer their first few questions, and then go back to the Rust work on my own machine. The frontend tasks make progress in a window I'm not looking at, and I come back to diffs to review instead of a queue of things I still have to start.
+That's what changes day to day. I start two or three threads on the mini PC in the morning, answer their first few questions, and then get on with the rest of my day. The frontend tasks make progress in a window I'm not looking at, and I come back to diffs to review instead of a queue of things I still have to start.
 
 The same file shows the other half of the design: the origin is `127.0.0.1`. The server on the mini PC only listens on loopback, and the workstation reaches it through SSH. A coding agent server is, by design, a thing that runs arbitrary commands as your user, and none of it is exposed on the LAN. The only port the network sees is `sshd`, with key-only auth, which was there already.
 
@@ -97,12 +99,12 @@ The workstation is the mirror image: Grok and OpenCode enabled, Claude and Codex
 
 T3 Code doesn't hold your credentials. It drives each provider's own CLI, which is logged in on the machine where it runs. On the mini PC the provider check comes back as `Claude Pro Subscription` for Claude Code and `ChatGPT Pro 5x Subscription` for Codex. So "which subscription does this thread use?" has a simple answer: **the one logged in on the machine that runs the thread.** Picking an environment when I create a thread is also picking an account.
 
-Splitting the four subscriptions across the two machines means they never queue behind each other. Claude and Codex are paid monthly, with usage windows that reset on their own, so they belong on the machine that's always on and always has something queued: the background runs on the mini PC keep them busy while I'm doing something else. Grok and DeepSeek stay on the workstation for the short, interactive things I'm watching anyway: a quick question, a second opinion on a diff, a one-off refactor in whatever I have open. DeepSeek goes through OpenCode, the generic provider in T3 Code, which is the natural home for any model without a dedicated integration.
+Splitting the four subscriptions across the two machines means they never queue behind each other. Claude and Codex are paid monthly, with usage windows that reset on their own, so they belong on the machine that's always on and always has something queued: the background runs on the mini PC keep them busy while I'm doing something else. Grok and DeepSeek stay on the workstation for shorter tasks: a quick question, a second opinion on a diff, a one-off refactor in whatever I have open. DeepSeek goes through OpenCode, the generic provider in T3 Code, which is the natural home for any model without a dedicated integration.
 
 ## One window for both
 
 What ties it together is that none of this costs me a second interface. Without T3 Code, using a repurposed second machine means an SSH session, a terminal multiplexer, and a running mental map of which agent is doing what over there. In practice that friction is enough that the spare machine goes back to being idle.
 
-Instead, both environments are in the same sidebar. A thread is labelled with its environment and its provider, so I can see at a glance that the React refactor is running on the mini PC under Claude and the Rust work in front of me is local. Starting a thread on the other machine takes exactly one extra choice at creation time, reviewing its diff is the same UI as any local thread, and its terminal output is right there when a build fails.
+Instead, both environments are in the same sidebar. A thread is labelled with its environment and its provider, so I can see at a glance that the React refactor is running on the mini PC under Claude and the Rust threads are local. Starting a thread on the other machine takes exactly one extra choice at creation time, reviewing its diff is the same UI as any local thread, and its terminal output is right there when a build fails.
 
-The decision I make is just: *is this the code I'm sitting inside right now?* If yes, it stays on the workstation, where the core is and where the hardware pays off. If not, it goes to the mini PC and runs in the background. An idle machine turned into a second pair of hands, and I didn't have to change how I work to use it.
+The decision I make is just: *does this work need the fast machine?* If it touches the Rust core, it stays on the workstation, where the hardware pays off. If not, it goes to the mini PC and runs in the background. An idle machine turned into a second pair of hands, and I didn't have to change how I work to use it.
