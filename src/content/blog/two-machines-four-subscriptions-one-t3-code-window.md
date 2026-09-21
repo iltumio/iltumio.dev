@@ -32,7 +32,7 @@ main workstation (192.168.1.178)        agents, mini PC (192.168.1.143)
 
 So the rule isn't "heavy work goes to the other machine". It's the opposite of what you'd expect from a spare box: **the machine with the weaker hardware runs the work that isn't hardware-bound, and it runs it in the background, where latency doesn't matter.** The fast machine keeps the loop I'm actually sitting in front of.
 
-That doesn't mean I sit there watching the agent work. Even on my workstation, I start a thread and come back to it only when it needs me: a question to answer, a plan to approve, a diff to review. The rest of the time goes to everything else my job is made of. The difference between the two machines is how much they wait for each other. When an agent on the workstation does call me back, the build and test cycle I jump into answers in seconds, because the Rust core is where that cycle has to be fast.
+That doesn't mean I sit there watching the agent work. Even on my workstation, I start a thread and come back to it only when it needs me: a question to answer, a plan to approve, a diff to review. The rest of the time goes to everything else my job is made of. So the difference between the two machines isn't whether I'm watching, it's how fast things move once I step in. When an agent on the workstation calls me back, the build and test cycle I jump into answers in seconds, because the Rust core is where that cycle has to be fast.
 
 ## Environments: where a thread actually runs
 
