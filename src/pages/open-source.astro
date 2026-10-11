@@ -1,13 +1,71 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
 
 export const prerender = true;
 
-const projects = [
-  { name: "OxiCloud", href: "https://github.com/AtalayaLabs/OxiCloud" },
-  { name: "viem", href: "https://github.com/wevm/viem" },
-  { name: "Apalis", href: "https://github.com/apalis-dev/apalis" },
+type Project = {
+  name: string;
+  href: string;
+  repo: string;
+  description: string;
+  logo: string;
+  /** Extra classes when the mark needs its own backdrop. */
+  logoClass?: string;
+  stars: number;
+};
+
+const projects: Project[] = [
+  {
+    name: "OxiCloud",
+    href: "https://github.com/AtalayaLabs/OxiCloud",
+    repo: "AtalayaLabs/OxiCloud",
+    description:
+      "Self-hosted cloud storage for files, photos, calendars, and contacts, written in Rust.",
+    logo: "/oss/oxicloud.svg",
+    stars: 3616,
+  },
+  {
+    name: "viem",
+    href: "https://github.com/wevm/viem",
+    repo: "wevm/viem",
+    description: "TypeScript interface for Ethereum.",
+    logo: "/oss/viem.png",
+    logoClass: "bg-gray-950 object-contain p-2.5",
+    stars: 3578,
+  },
+  {
+    name: "Apalis",
+    href: "https://github.com/apalis-dev/apalis",
+    repo: "apalis-dev/apalis",
+    description: "Type-safe background job processing for Rust.",
+    logo: "/oss/apalis.png",
+    stars: 1410,
+  },
 ];
+
+await Promise.all(
+  projects.map(async (project) => {
+    try {
+      const res = await fetch(`https://api.github.com/repos/${project.repo}`, {
+        headers: {
+          Accept: "application/vnd.github+json",
+          "User-Agent": "iltumio.dev",
+        },
+        signal: AbortSignal.timeout(4000),
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      if (typeof data.stargazers_count === "number") {
+        project.stars = data.stargazers_count;
+      }
+    } catch {
+      // Keep the fallback count when GitHub is unavailable.
+    }
+  }),
+);
+
+const formatStars = (count: number) => count.toLocaleString("en-US");
 ---
 
 <Layout
@@ -29,16 +87,37 @@ const projects = [
         </p>
       </header>
 
-      <ul class="flex flex-col gap-3">
+      <ul class="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
         {projects.map((project) => (
           <li>
             <a
               href={project.href}
               target="_blank"
               rel="noreferrer"
-              class="text-lg font-semibold text-gray-900 underline-offset-2 hover:text-purple-600 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 dark:text-white dark:hover:text-purple-400"
+              class="group flex h-full flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-shadow duration-300 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 dark:border-gray-800 dark:bg-gray-900"
             >
-              {project.name}
+              <img
+                src={project.logo}
+                alt=""
+                class:list={["size-14 rounded-xl", project.logoClass ?? "object-cover"]}
+              />
+              <div class="mt-5 flex items-baseline justify-between gap-3">
+                <h2 class="text-lg font-bold tracking-tight text-gray-900 transition-colors group-hover:text-purple-600 dark:text-white dark:group-hover:text-purple-400">
+                  {project.name}
+                </h2>
+                <span class="inline-flex shrink-0 items-center gap-1 text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <Icon name="heroicons:star-20-solid" class="size-3.5" aria-hidden="true" />
+                  <span class="sr-only">{formatStars(project.stars)} GitHub stars.</span>
+                  <span aria-hidden="true">{formatStars(project.stars)}</span>
+                </span>
+              </div>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                {project.description}
+              </p>
+              <span class="mt-5 inline-flex items-center text-sm font-medium text-purple-600 transition-transform group-hover:translate-x-1 dark:text-purple-400">
+                GitHub
+                <span aria-hidden="true" class="ml-1">&rarr;</span>
+              </span>
             </a>
           </li>
         ))}
