@@ -4,6 +4,7 @@ import ThemeToggle from "../theme-toggle/ThemeToggle.astro";
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 const isHome = path === "/";
 const isBlog = path === "/blog" || path.startsWith("/blog/");
+const isOpenSource = path === "/open-source";
 
 const itemClass = (active: boolean) =>
   [
@@ -53,6 +54,19 @@ const itemClass = (active: boolean) =>
         >
           Blog
           {isBlog && (
+            <span
+              class="absolute inset-x-3 bottom-0 h-0.5 rounded-full bg-purple-600"
+              aria-hidden="true"
+            />
+          )}
+        </a>
+        <a
+          href="/open-source"
+          class={itemClass(isOpenSource)}
+          aria-current={isOpenSource ? "page" : undefined}
+        >
+          Open source
+          {isOpenSource && (
             <span
               class="absolute inset-x-3 bottom-0 h-0.5 rounded-full bg-purple-600"
               aria-hidden="true"

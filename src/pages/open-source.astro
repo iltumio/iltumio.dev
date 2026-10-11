@@ -1,0 +1,88 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+export const prerender = true;
+
+const projects = [
+  {
+    name: "OxiCloud",
+    href: "https://github.com/AtalayaLabs/OxiCloud",
+    summary:
+      "Self-hosted cloud storage for files, photos, calendars, and contacts, written in Rust.",
+    contribution:
+      "Generated the frontend API client from the OpenAPI specification.",
+    pr: "https://github.com/AtalayaLabs/OxiCloud/pull/701",
+  },
+  {
+    name: "viem",
+    href: "https://github.com/wevm/viem",
+    summary: "TypeScript interface for Ethereum.",
+    contribution: "Fixed an infinite loop in estimateGas on Linea.",
+    pr: "https://github.com/wevm/viem/pull/2915",
+  },
+  {
+    name: "Apalis",
+    href: "https://github.com/apalis-dev/apalis",
+    summary:
+      "Type-safe background job processing for Rust.",
+    contribution:
+      "Idle workers now wake when a shutdown starts, so the process can finish.",
+    pr: "https://github.com/apalis-dev/apalis/pull/777",
+  },
+];
+---
+
+<Layout
+  title="Open source | Manuel Tumiati"
+  description="Open source projects Manuel Tumiati has contributed to, including OxiCloud, viem, and Apalis."
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Open source", url: "/open-source" },
+  ]}
+>
+  <main id="main-content" class="flex flex-1 flex-col items-center bg-gray-50 transition-colors duration-300 dark:bg-gray-950">
+    <div class="w-full max-w-5xl px-5 pb-12 pt-8 sm:px-6 lg:px-8 lg:pb-16 lg:pt-12">
+      <header class="mb-8 max-w-2xl lg:mb-10">
+        <h1 class="text-balance text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white lg:text-5xl">
+          Open source
+        </h1>
+        <p class="mt-4 text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+          I love open source and I contribute to it. These are projects I have sent patches to.
+        </p>
+      </header>
+
+      <ul class="flex flex-col gap-4">
+        {projects.map((project) => (
+          <li class="rounded-xl border border-gray-100 bg-white px-5 py-4 dark:border-gray-800 dark:bg-gray-900 sm:px-6 sm:py-5">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+              <h2 class="text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+                <a
+                  href={project.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="rounded-sm hover:text-purple-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 dark:hover:text-purple-400"
+                >
+                  {project.name}
+                </a>
+              </h2>
+              <a
+                href={project.pr}
+                target="_blank"
+                rel="noreferrer"
+                class="text-sm font-medium text-purple-600 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 dark:text-purple-400"
+              >
+                Pull request
+              </a>
+            </div>
+            <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+              {project.summary}
+            </p>
+            <p class="mt-1 text-sm leading-relaxed text-gray-900 dark:text-gray-200">
+              {project.contribution}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </main>
+</Layout>
