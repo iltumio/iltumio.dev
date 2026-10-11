@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Mermaid from '../../components/blog/Mermaid.astro';
 
@@ -12,14 +12,14 @@ export async function getStaticPaths() {
     return !post.data.draft && post.data.date <= new Date();
   });
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
-const hasMermaid = post.body.includes("```mermaid");
+const { Content } = await render(post);
+const hasMermaid = (post.body ?? "").includes("```mermaid");
 
 const blogPostingSchema = {
   "@context": "https://schema.org",
@@ -39,8 +39,8 @@ const blogPostingSchema = {
   },
   "datePublished": post.data.date.toISOString().split('T')[0],
   "dateModified": post.data.date.toISOString().split('T')[0],
-  "mainEntityOfPage": new URL(`/blog/${post.slug}`, Astro.site).href,
-  "url": new URL(`/blog/${post.slug}`, Astro.site).href,
+  "mainEntityOfPage": new URL(`/blog/${post.id}`, Astro.site).href,
+  "url": new URL(`/blog/${post.id}`, Astro.site).href,
 };
 ---
 
@@ -53,7 +53,7 @@ const blogPostingSchema = {
   breadcrumbs={[
     { name: "Home", url: "/" },
     { name: "Blog", url: "/blog" },
-    { name: post.data.title, url: `/blog/${post.slug}` },
+    { name: post.data.title, url: `/blog/${post.id}` },
   ]}
 >
   <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />

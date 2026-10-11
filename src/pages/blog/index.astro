@@ -44,7 +44,7 @@ const gridCols = posts.length >= 3 ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
           <div class={`grid ${gridCols} gap-8`}>
             {posts.map((post) => (
               <article class="group flex flex-col h-full bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-                <a href={`/blog/${post.slug}`} class="flex flex-col h-full p-6">
+                <a href={`/blog/${post.id}`} class="flex flex-col h-full p-6">
                   <div class="flex-1">
                     <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
                       <time datetime={post.data.date.toISOString()}>

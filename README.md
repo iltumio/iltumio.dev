@@ -19,11 +19,11 @@ Personal website and blog of [Manuel Tumiati](https://iltumio.dev) — Co-founde
 - [Astro](https://astro.build) with the [Cloudflare adapter](https://docs.astro.build/en/guides/integrations-guide/cloudflare/)
 - [Tailwind CSS](https://tailwindcss.com)
 - Markdown blog via [Astro content collections](https://docs.astro.build/en/guides/content-collections/) (`src/content/blog`)
-- Deployed to Cloudflare Pages
+- Deployed to Cloudflare Workers
 
 ## Development
 
-Requires [Bun](https://bun.sh) and Node.js 22+.
+Requires [Bun](https://bun.sh) and Node.js 22.12.0 or newer.
 
 ```bash
 bun install
