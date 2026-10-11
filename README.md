@@ -30,6 +30,8 @@ bun install
 bun dev
 ```
 
+Before pushing, run `bun run check`. It lints, then builds. Do not push if it fails.
+
 ## Production
 
 ```bash
