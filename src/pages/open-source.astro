@@ -42,6 +42,14 @@ const projects: Project[] = [
     logo: "/oss/apalis.png",
     stars: 1410,
   },
+  {
+    name: "Venturi",
+    href: "https://github.com/VenturiVideo/Venturi",
+    repo: "VenturiVideo/Venturi",
+    description: "Linux-first, performance-oriented video editor written in Rust.",
+    logo: "/oss/venturi.png",
+    stars: 222,
+  },
 ];
 
 await Promise.all(
@@ -70,7 +78,7 @@ const formatStars = (count: number) => count.toLocaleString("en-US");
 
 <Layout
   title="Open source | Manuel Tumiati"
-  description="Open source projects Manuel Tumiati has contributed to, including OxiCloud, viem, and Apalis."
+  description="Open source projects Manuel Tumiati has contributed to, including OxiCloud, viem, Apalis, and Venturi."
   breadcrumbs={[
     { name: "Home", url: "/" },
     { name: "Open source", url: "/open-source" },
